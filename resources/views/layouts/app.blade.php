@@ -204,21 +204,6 @@
         <main class="py-4">
             @yield('content')
         </main>
-
-        <div class="test">
-            <img src="https://i.pinimg.com/736x/6d/a0/53/6da053e869563a53fb5da883260c79a7.jpg" alt="">
-            <img src="https://i.pinimg.com/736x/6d/a0/53/6da053e869563a53fb5da883260c79a7.jpg" alt="">
-            <img src="https://i.pinimg.com/736x/6d/a0/53/6da053e869563a53fb5da883260c79a7.jpg" alt="">
-            <img src="https://i.pinimg.com/736x/6d/a0/53/6da053e869563a53fb5da883260c79a7.jpg" alt="">
-            <img src="https://i.pinimg.com/736x/6d/a0/53/6da053e869563a53fb5da883260c79a7.jpg" alt="">
-            <img src="https://i.pinimg.com/736x/6d/a0/53/6da053e869563a53fb5da883260c79a7.jpg" alt="">
-            <img src="https://i.pinimg.com/736x/6d/a0/53/6da053e869563a53fb5da883260c79a7.jpg" alt="">
-            <img src="https://i.pinimg.com/736x/6d/a0/53/6da053e869563a53fb5da883260c79a7.jpg" alt="">
-            <img src="https://i.pinimg.com/736x/6d/a0/53/6da053e869563a53fb5da883260c79a7.jpg" alt="">
-            <img src="https://i.pinimg.com/736x/6d/a0/53/6da053e869563a53fb5da883260c79a7.jpg" alt="">
-            <img src="https://i.pinimg.com/736x/6d/a0/53/6da053e869563a53fb5da883260c79a7.jpg" alt="">
-
-        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
