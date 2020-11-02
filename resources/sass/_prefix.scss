@@ -1,0 +1,75 @@
+@mixin flex() {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin inline-flex() {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+@mixin flex-1() {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+@mixin flex-box-pack($fbp) {
+  -webkit-box-pack: $fbp;
+  -ms-flex-pack: $fbp;
+}
+
+@mixin flex-direction($roc) {
+  -webkit-flex-direction: $roc;
+  -ms-flex-direction: $roc;
+  flex-direction: $roc;
+}
+
+@mixin flex-alignItem($alignVal) {
+  -webkit-align-items: $alignVal;
+  -webkit-box-align: $alignVal;
+  -ms-flex-align: $alignVal;
+  align-items: $alignVal;
+}
+
+@mixin flex-justifyContent($alignVal) {
+  -webkit-justify-content: $alignVal;
+  justify-content: $alignVal;
+}
+
+@mixin flex-wrap($fw) {
+  -webkit-flex-wrap: $fw;
+  -ms-flex-wrap: $fw;
+  flex-wrap: $fw;
+}
+
+@mixin user-select($value) {
+  -webkit-user-select: $value;
+  -moz-user-select: $value;
+  -ms-user-select: $value;
+  user-select: $value;
+}
+
+@mixin text-decoration($valTD) {
+  -webkit-text-decoration: $valTD;
+  text-decoration: $valTD;
+}
+
+@mixin mask-size($ms) {
+  -webkit-mask-size: $ms;
+  mask-size: $ms;
+}
+
+@mixin mask-repeat($mr) {
+  -webkit-mask-repeat: $mr;
+  mask-repeat: $mr;
+}
+
+@mixin transition($t) {
+  -webkit-transition: $t;
+  transition: $t;
+}
