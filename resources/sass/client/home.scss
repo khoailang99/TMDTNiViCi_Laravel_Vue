@@ -1,6 +1,9 @@
 // Prefix
 @use '../prefix';
 
+// Common Style
+@use '../common';
+
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
@@ -522,4 +525,359 @@
   -webkit-transition: -webkit-transform 0.5s;
   -webkit-transition: transform 0.5s;
   transition: transform 0.5s;
+}
+
+// List products
+.css-5542cb, .css-060572 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  @extend %padding-lr-1rem;
+  @extend %margin-lr-auto;
+  max-width: 1264px;
+  border-radius: 5px;
+  background: #fff;
+}
+.css-b59019 {
+  background: #fff;
+  width: 100%;
+  border-bottom: 1px solid #eaeaea;
+  font-size: 14px;
+  height: 64px;
+  @include prefix.flex();
+  @include prefix.flex-box-pack(justify);
+  @include prefix.flex-justifyContent(start);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.css-3fb406 {
+  @include prefix.flex();
+  @include prefix.flex-box-pack(justify);
+  @include prefix.flex-justifyContent(space-between);
+  @include prefix.flex-alignItem(center);
+  padding: 0 1rem;
+}
+.css-81293a {
+  margin-right: 2rem;
+  font-weight: 600;
+}
+.css-16a7eb {
+  border-radius: 4px;
+  display: inline-block;
+  border: solid 1px #e0e0e0;
+  background-color: #fff;
+  padding: 0.5rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.css-81f8d9 {
+  font-weight: bold;
+  @include prefix.flex();
+  @include prefix.flex-alignItem(center);
+  @include prefix.flex-box-pack(start);
+  @include prefix.flex-justifyContent(flex-start);
+  font-size: 0.875rem;
+}
+.css-e5afe4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.css-5111ad {
+  height: 40px;
+  line-height: 37px;
+  padding: 0 10px;
+  cursor: pointer;
+  @include prefix.flex();
+  @include prefix.flex-alignItem(center);
+}
+.css-7044ff {
+  position: relative;
+  overflow: hidden;
+}
+.css-f613cc {
+  width: 100px;
+  height: 2.1rem;
+  line-height: 2.1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0 0.35rem;
+  z-index: 1;
+}
+.css-709319 {
+  background: #1435c3;
+  border: none;
+  color: #fff;
+  padding: 0px 15px;
+  border-radius: 4px;
+  margin-left: 5px;
+  visibility: visible;
+  height: 2.1rem;
+  line-height: 2.1rem;
+  visibility: hidden;
+}
+
+
+
+
+.css-2e8efa {
+  padding: 0.3rem;
+  background: rgb(255, 255, 255);
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: rgb(51, 51, 51);
+  border-radius: 0.5rem;
+  height: 100%;
+}
+.css-a46f11 {
+  padding-bottom: 15px;
+  display: flex;
+  @include prefix.flex-wrap(wrap);
+}
+.css-2c7762 {
+  padding: 10px;
+  border-radius: 5px;
+  width: 20%;
+  display: block;
+}
+.css-506c78 {
+  height: 200px;
+}
+.css-fde874 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-size: 13px;
+  max-height: 3.775rem;
+  min-height: 3.775rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.css-b38591 {
+  color: #d9852b;
+  font-size: 0.75rem;
+  margin-top: 2px;
+  line-height: 1rem;
+}
+.css-e678cc {
+  @include prefix.flex();
+  @include prefix.flex-alignItem(center);
+  margin-top: 2px;
+}
+.css-46c3ed {
+  @include prefix.flex();
+  @include prefix.flex-box-pack(justify);
+  @include prefix.flex-justifyContent(space-between);
+  color: #66BB6A;
+}
+.css-950c09 {
+  @include prefix.flex();
+  @include prefix.flex-wrap(wrap);
+  margin-left: 0.2rem;
+}
+.css-49039d {
+  padding-left: 10px;
+}
+.css-3c7ce6 {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: baseline;
+  align-items: baseline;
+}
+.css-690a6b {
+  @include prefix.width-max-content();
+  display: inline-block;
+  margin-bottom: 0px;
+  font-size: 1rem;
+  color: rgb(20, 53, 195);
+  font-weight: bold;
+}
+.css-950c09 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0.2rem;
+}
+.css-8280ac {
+  display: flex;
+  flex-wrap: wrap;
+  @include prefix.flex-alignItem(center);
+  margin-top: 0.5rem;
+}
+.css-41ab48 {
+  font-size: 0.6875rem;
+  color: rgb(130, 134, 158);
+}
+.css-7bc7d3 {
+  margin: 0px 0.2rem;
+  width: 30px;
+  height: 30px;
+}
+.css-83b632 {
+  position: relative;
+  overflow: hidden;
+  flex: 1 0 auto;
+  display: flex;
+  cursor: unset;
+  z-index: 0;
+  margin: auto;
+  border-radius: 4px;
+  border: 1px solid rgb(224, 224, 224);
+  width: 30px;
+  height: 30px !important;
+}
+.css-904f61 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  @include prefix.transition(transform 0.5s);
+}
+.css-48812d {
+  @include prefix.flex();
+  @include prefix.flex-alignItem(center);
+  @include prefix.flex-alignItem(center);
+  width: 100%;
+}
+.css-c5818a {
+  @include prefix.width-max-content();
+  display: inline-block;
+  @include prefix.text-decoration(line-through);
+  color: #82869E;
+  font-size: 0.75rem;
+  width: 100%;
+}
+.css-027579 {
+  font-size: 0.75rem;
+  color: #3096B3;
+  margin-left: 6px;
+}
+
+// Footer
+.css-2156b4 {
+  width: 30%;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #d6d6d6;
+  box-shadow: 1px 1px 5px grey, -1px -1px 5px grey;
+}
+.css-1ff5d7 {
+  width: 60%;
+}
+.css-060572 {
+  @include prefix.flex();
+  @include prefix.flex-justifyContent(space-between);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 22px;
+}
+.css-b1c5a5 {
+  @include prefix.flex();
+  margin-bottom: 45px;
+}
+.css-643ddd {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 50%;
+  text-align: left;
+}
+// Cộng đồng NiViCi
+.css-556c6a {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.css-2e32a4 {
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+  line-height: 1rem;
+  padding: .365rem .75rem;
+  @include prefix.inline-flex();
+  @include prefix.flex-alignItem(center);
+  @include prefix.flex-box-pack(center);
+  background-color: transparent;
+  border-color: transparent;
+  color: #333333;
+  border-width: 1px;
+  border-style: solid;
+  @include prefix.user-select(none);
+  @include prefix.text-decoration(none);
+  @include prefix.flex-direction(row);
+  position: relative;
+  width: 100%;
+  font-size: 12px;
+  color: #333;
+  padding-left: 0px;
+  text-align: left;
+  padding-bottom: 0px;
+  max-width: initial;
+}
+.css-8ece4e {
+  display: inline-block;
+  width: 16px;
+}
+// Email liên hệ
+.css-057fe2 {
+  font-size: 12px;
+  width: 100%;
+  padding-bottom: 10px;
+}
+.css-057fe2 a {
+  @include prefix.text-decoration(none);
+  @include prefix.flex();
+  @include prefix.flex-alignItem(center);
+}
+// Phương thức thanh toán
+.css-eb03a4 {
+  width: 100%;
+}
+.css-24329a{
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+  line-height: 1rem;
+  padding: .365rem .75rem;
+  @include prefix.inline-flex();
+  @include prefix.flex-alignItem(center);
+  @include prefix.flex-box-pack(center);
+  @include prefix.flex-justifyContent(center);
+  text-align: center;
+  background-color: transparent;
+  border-color: transparent;
+  color: #333333;
+  border-width: 1px;
+  border-style: solid;
+  @include prefix.user-select(none);
+  @include prefix.text-decoration(none);
+  @include prefix.flex-direction(column);
+  position: relative;
+  font-size: 12px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+  max-width: 80px;
+  @include prefix.flex-box-pack(start);
+  @include prefix.flex-justifyContent(flex-start);
+}
+.css-554658 {
+  display: inline;
+  font-size: 30px;
+}
+
+.css-aa9c4a {
+  text-align: center;
+  padding: 8px;
+  background: #e3e3e3;
 }
