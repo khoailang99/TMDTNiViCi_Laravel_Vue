@@ -204,6 +204,87 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer>
+            <div class="css-700633">
+                <div class="css-060572">
+                    <div class="footer__map css-2156b4">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.1132409246816!2d105.80122644960281!3d21.028154485929985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab424a50fff9%3A0xbe3a7f3670c0a45f!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBHaWFvIHRow7RuZyBW4bqtbiB04bqjaSAoVVRDKQ!5e0!3m2!1svi!2s!4v1604370785879!5m2!1svi!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                    <div class="css-1ff5d7">
+                        <div class="css-b1c5a5">
+                            <div class="community_NiViCi css-643ddd">
+                                <div class="css-556c6a"> Cộng đồng NiViCi </div>
+                                <a href="https://phongvu.page.link/fanpage" class="css-2e32a4">
+                                    <span size="16" class="css-8ece4e" style="color: #485992;">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </span>
+                                    <div class="spacer css-508a4d"></div>NiViCi Việt Nam
+                                </a>
+                                <a href="https://phongvu.page.link/fanpage" class="css-2e32a4">
+                                    <span size="16" class="css-8ece4e" style="color: #cf2200;">
+                                        <i class="fab fa-youtube"></i>
+                                    </span>
+                                    <div class="spacer css-508a4d"></div>NiViCi Media
+                                </a>
+                                <a href="https://phongvu.page.link/fanpage" class="css-2e32a4">
+                                    <span size="16" class="css-8ece4e" style="color: #00AFF7;">
+                                        <i class="fas fa-user-friends"></i>
+                                    </span>
+                                    <div class="spacer css-508a4d"></div>NiViCi Hội
+                                </a>
+                                <a href="https://phongvu.page.link/fanpage" class="css-2e32a4">
+                                    <span size="16" class="css-8ece4e" style="color: #ff5500;">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </span>
+                                    <div class="spacer css-508a4d"></div>
+                                    Gọi Mua hàng: 1800 6867 (miễn phí)
+                                </a>
+                                <a href="https://phongvu.page.link/fanpage" class="css-2e32a4">
+                                    <span size="16" class="css-8ece4e" style="color: #ff5500;">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </span>
+                                    <div class="spacer css-508a4d"></div>
+                                    Gọi Chăm sóc: 1800 6865 (miễn phí)
+                                </a>
+                                <a href="https://phongvu.page.link/fanpage" class="css-2e32a4">
+                                    <span size="16" class="css-8ece4e" style="color: #ff5500;">
+                                        <i class="far fa-comments"></i>
+                                    </span>
+                                    <div class="spacer css-508a4d"></div>
+                                    Chat với tư vấn viên
+                                </a>
+                            </div>
+                            <div class="contact_email css-643ddd">
+                                <div class="css-556c6a"> Email liên hệ: </div>
+                                <div class="css-057fe2">Hỗ trợ Khách hàng:<a href="mailto:nguyenc431@gmail.com">nguyenc431@gmail.com</a></div>
+                                <div class="css-057fe2">Liên hệ báo giá:<a href="mailto:nguyenc431@gmail.com">ntnam@gmail.com</a></div>
+                                <div class="css-057fe2">Hợp tác phát triển:<a href="mailto:nguyenc431@gmail.com">vnvn@gmail.com</a></div>
+                            </div>
+                        </div>
+                        <div class="payment_methods css-eb03a4">
+                            <div class="css-0bc721">
+                                <div class="css-556c6a"> Phương thức thanh toán </div>
+                                <a href="https://phongvu.page.link/fanpage" class="css-24329a">
+                                </a>
+                                <a href="https://phongvu.page.link/fanpage" class="css-24329a">
+                                    <span size="30" color="#3e3e3e" class="css-554658">
+                                        <i class="far fa-credit-card"></i>
+                                    </span>
+                                    <div class="spacer css-508a4d"></div>
+                                    Internet Banking
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright css-aa9c4a">
+                    <span>
+                        Copyright @1999 nivici.com. Bản quyền thông tin trên website thuộc về nivici.com!
+                    </span>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
