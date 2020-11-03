@@ -68,6 +68,12 @@ html[xmlns] .clearfix {
 -moz-box-sizing: border-box;
 box-sizing: border-box;
 }
+
 /*Add your css into here*/
 .fl_left{ float: left;}
 .fl_right{ float: right;}
+
+img {
+  width: 100%;
+  height: auto;
+}
