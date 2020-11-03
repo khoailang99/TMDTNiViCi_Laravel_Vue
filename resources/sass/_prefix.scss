@@ -73,3 +73,9 @@
   -webkit-transition: $t;
   transition: $t;
 }
+
+@mixin width-max-content() {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
