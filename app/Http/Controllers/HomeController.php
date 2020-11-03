@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductType;
+use App\Models\Product;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,6 @@ class HomeController extends Controller
     public function index()
     {
         $prodTypeList = array();
-        $listSubLvProd = array();
         // $ancentralLevelProdT = $this -> getListProdTAccordTFather(0);
         // foreach($ancentralLevelProdT as $prodT) {
         //     array_push($prodTypeList, $prodT);
@@ -49,7 +49,15 @@ class HomeController extends Controller
         }
         \Debugbar::info($prodTypeList);
         \Debugbar::warning('----');
-        return view('home', ['prodTypeList' => $prodTypeList]);
+        return view('home', ['prodTypeList' => $prodTypeList, 'listProducts' => $product -> getAllProductsPM() ]);
+    }
+
+    public function getAllProductHC() {
+        $product = new Product();
+        $x = $product -> getAllProductsPM();
+        \Debugbar::info($x);
+        \Debugbar::warning('---------------');
+        return view('Demo', ['productList' => $x]);
     }
 
     private function getListProdTAccordTFather($id) {
