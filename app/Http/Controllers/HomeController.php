@@ -27,6 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $product = new Product();
         $prodTypeList = array();
         // $ancentralLevelProdT = $this -> getListProdTAccordTFather(0);
         // foreach($ancentralLevelProdT as $prodT) {
@@ -38,7 +39,10 @@ class HomeController extends Controller
         //     }
         // }
 
+        $grossProd = $product -> getCountProd();
+        $totalPages = ceil($grossProd / $product -> getProdNumbDisplayed());
         $ancentralLevelProdT = $this -> getListProdTAccordTFather(0);
+
         foreach($ancentralLevelProdT as $prodT) {
             $aSuperPT = new ProductType($prodT, array());
             $prodTypeT = $this -> getListProdTAccordTFather($prodT->ID);
@@ -49,15 +53,15 @@ class HomeController extends Controller
         }
         \Debugbar::info($prodTypeList);
         \Debugbar::warning('----');
-        return view('home', ['prodTypeList' => $prodTypeList, 'listProducts' => $product -> getAllProductsPM() ]);
+        return view('home', ['prodTypeList' => $prodTypeList, 'listProducts' => $product -> getAllProductsPM(), 'totalProd' => $grossProd, 'totalPages' => $totalPages ]);
     }
 
-    public function getAllProductHC() {
+    public function getAllProdByPagination(Request $request) {
+        $page = $request -> input('page');
+        $prodNumbDisplayed = $request -> input('prodNumbDisplayed');
         $product = new Product();
-        $x = $product -> getAllProductsPM();
-        \Debugbar::info($x);
-        \Debugbar::warning('---------------');
-        return view('Demo', ['productList' => $x]);
+        
+        return array("listProducts" => $product -> getProdP($page));
     }
 
     private function getListProdTAccordTFather($id) {
