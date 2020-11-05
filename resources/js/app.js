@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap'); 
 
 window.Vue = require('vue');
 
@@ -34,6 +34,8 @@ Vue.directive('click-outside', {
 });
 
 Vue.component('menu-panel-component', require('./components/MenuPanelComponent.vue').default);
+Vue.component('products-component', require('./components/ProductsComponent.vue').default);
+Vue.component('pagination-component', require('./components/PaginationComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -46,14 +48,40 @@ const app = new Vue({
     mounted: function() {
         let scriptJs = document.createElement('script');
         scriptJs.setAttribute('src', '/js/client/common.js');
-        document.body.appendChild(scriptJs)
+        scriptJs.setAttribute('type', 'module');
+        document.body.appendChild(scriptJs);
+        
+        this.runResPagination();
     },
     data: function() {
         return {
+            listProducts: null,
+            // Các biến cho phân trang
+            pageP: 1, 
+            defaultPageNumbs: 9,
+            prodNumbDisplayed: 0,
+            // Kết thúc các biến cho phân trang
             listSTPT: null,
             isHoveredOver: false,
             prodCatalogBtnClicked: false,
         }  
+    },
+    watch: {
+        pageP: function(newPageP, oldPageP) {
+            let vm = this;
+            axios.get('/products', {
+                params: {
+                    page: newPageP,
+                    prodNumbDisplayed: 30
+                }
+            })
+            .then(function (response) {
+              vm.listProducts = response.data.listProducts;
+            })
+            .catch(function (error) {
+              console.log("Lỗi phân trang!")
+            });
+        }
     },
     methods: {
         turnOffProdCDropDown: function() {
@@ -67,6 +95,26 @@ const app = new Vue({
         },
         mouseleaveMI: function() {
             this.isHoveredOver = false;
+        }, 
+        runResPagination: function() {
+            let objApp = this;
+            let wmM__minW400 = window.matchMedia("(min-width: 400px)"); // defaultPageNumbs = 9  
+            let wmM__minW320_maxW400 = window.matchMedia("(min-width: 320px) and (max-width: 400px)"); // defaultPageNumbs = 7
+            let wmM__maxW320 = window.matchMedia("(max-width: 320px)"); // defaultPageNumbs = 5
+
+            objApp.defaultPageNumbs = (wmM__minW320_maxW400.matches) ? 7 : ((wmM__maxW320.matches) ? 5: 9); // 9 khi wmM__minW400.matches == true
+        
+            wmM__minW400.addListener(objApp.updateDefaultPageNumbs(this, 9));
+            wmM__minW320_maxW400.addListener(objApp.updateDefaultPageNumbs(this, 7));
+            wmM__maxW320.addListener(objApp.updateDefaultPageNumbs(this, 5));
+        }, 
+        updateDefaultPageNumbs: function(jsMediaQ, pageNumb) {
+            if(jsMediaQ.matches) {
+                this.defaultPageNumbs = pageNumb;
+            }
+        },
+        pageChangePagination: function(page) {
+            this.pageP = page;
         }
     }
 });
