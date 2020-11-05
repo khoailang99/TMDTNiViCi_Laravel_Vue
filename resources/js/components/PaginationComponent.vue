@@ -50,7 +50,9 @@
         if(pagingBtnIsClicked < 1 || pagingBtnIsClicked > this.total_pages) { return; }
         this.pageP = pagingBtnIsClicked;
         this.$emit('page_change_pagination', pagingBtnIsClicked);
-        this.handlePagination(this.pageP);
+        if(this.numbPages >= this.default_page_numbs) {
+          this.handlePagination(this.pageP);
+        }
       },
       initArrPagesPagination: function() {
         let orderPaginBtn;

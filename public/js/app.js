@@ -2024,7 +2024,10 @@ __webpack_require__.r(__webpack_exports__);
 
       this.pageP = pagingBtnIsClicked;
       this.$emit('page_change_pagination', pagingBtnIsClicked);
-      this.handlePagination(this.pageP);
+
+      if (this.numbPages >= this.default_page_numbs) {
+        this.handlePagination(this.pageP);
+      }
     },
     initArrPagesPagination: function initArrPagesPagination() {
       var orderPaginBtn;
