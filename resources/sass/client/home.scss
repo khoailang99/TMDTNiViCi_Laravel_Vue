@@ -881,3 +881,44 @@
   padding: 8px;
   background: #e3e3e3;
 }
+
+// Pagination 
+.css-0bc721  {
+  max-width: 1264px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pa__list-page-numbers {
+  @include prefix.flex();
+  @include prefix.flex-justifyContent(center);
+  padding-top: 12px;
+  margin: 0;
+
+  li {
+    margin: 5px;
+    button {
+      outline: none!important;
+      box-shadow: none!important;
+      box-sizing: border-box;
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      background: #ffffff;
+      @include prefix.flex();
+      @include prefix.flex-justifyContent(center);
+      @include prefix.flex-alignItem(center);
+      border: 1px solid gray;
+      color: #2982a4;
+      @include prefix.text-decoration(none);
+      &:active {
+        box-shadow: 1px 1px 5px gray, -1px -1px 5px gray!important;
+      }
+    }
+
+    button.active {
+      color: #fff;
+      background: #1a21ec;
+      border-color: #1a21ec;
+    }
+  }
+}

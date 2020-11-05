@@ -986,3 +986,47 @@
   background: #e3e3e3;
 }
 
+.css-0bc721 {
+  max-width: 1264px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pa__list-page-numbers {
+  display: flex;
+  justify-content: center;
+  padding-top: 12px;
+  margin: 0;
+}
+
+.pa__list-page-numbers li {
+  margin: 5px;
+}
+
+.pa__list-page-numbers li button {
+  outline: none !important;
+  box-shadow: none !important;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid gray;
+  color: #2982a4;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.pa__list-page-numbers li button:active {
+  box-shadow: 1px 1px 5px gray, -1px -1px 5px gray !important;
+}
+
+.pa__list-page-numbers li button.active {
+  color: #fff;
+  background: #1a21ec;
+  border-color: #1a21ec;
+}
+
