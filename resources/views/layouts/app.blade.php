@@ -266,6 +266,25 @@
                             <div class="css-0bc721">
                                 <div class="css-556c6a"> Phương thức thanh toán </div>
                                 <a href="https://phongvu.page.link/fanpage" class="css-24329a">
+                                    <span size="30" color="#3e3e3e" class="css-554658">
+                                        <i class="fas fa-qrcode"></i>
+                                    </span>
+                                    <div class="spacer css-508a4d"></div> 
+                                    QR Code
+                                </a>
+                                <a href="https://phongvu.page.link/fanpage" class="css-24329a">
+                                    <span size="30" color="#3e3e3e" class="css-554658">
+                                        <i class="far fa-money-bill-alt"></i>
+                                    </span>
+                                    <div class="spacer css-508a4d"></div>
+                                    Tiền mặt
+                                </a>
+                                <a href="https://phongvu.page.link/fanpage" class="css-24329a">
+                                    <span size="30" color="#3e3e3e" class="css-554658">
+                                        <i class="far fa-clock"></i>
+                                    </span>
+                                    <div class="spacer css-508a4d"></div>
+                                    Trả góp
                                 </a>
                                 <a href="https://phongvu.page.link/fanpage" class="css-24329a">
                                     <span size="30" color="#3e3e3e" class="css-554658">
