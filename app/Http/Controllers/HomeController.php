@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductType;
-use App\Models\Product;
+use App\Models\Product\ProductTypeModel;
+use App\Models\Product\Product;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -44,10 +44,10 @@ class HomeController extends Controller
         $ancentralLevelProdT = $this -> getListProdTAccordTFather(0);
 
         foreach($ancentralLevelProdT as $prodT) {
-            $aSuperPT = new ProductType($prodT, array());
+            $aSuperPT = new ProductTypeModel($prodT, array());
             $prodTypeT = $this -> getListProdTAccordTFather($prodT->ID);
             foreach($prodTypeT as $prodTT) {
-                array_push($aSuperPT -> childLv, new ProductType($prodTT, $this -> getListProdTAccordTFather($prodTT->ID)));
+                array_push($aSuperPT -> childLv, new ProductTypeModel($prodTT, $this -> getListProdTAccordTFather($prodTT->ID)));
             }
             array_push($prodTypeList, $aSuperPT);
         }
