@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Product;
 
-class ProductType
+class ProductTypeModel
 {
   public function __construct($fatherLv, $childLv) {
     $this->fatherLv = $fatherLv;
