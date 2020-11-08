@@ -4,21 +4,38 @@ namespace App\Models\Product;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Category\ProductCategoryModel;
+use App\Models\Specification\ProductCategoryS_ProductS_Model;
+use App\Models\Promotion\PmtDetail_PmtPackage_Model;
+
 class Product extends Model
 {
   private $prodNumbDisplayed = 8;
 
-  public function getCountProd() {
-    return Product::count();
+  public function totalNumbProdDisplayed() {
+    return Product::whereNotIn('Status',[2,3]) -> count(); // 2: ẩn, 3: xóa
   }
 
-  public function getAllProductsPM() {
-    $products = Product::where('CategoryID',1) -> take($this -> prodNumbDisplayed) -> get();
-    return $products;
-  }
-
-  public function getProdP($page) {
-    $products = Product::skip(($page - 1) * $this -> prodNumbDisplayed) -> take($this -> prodNumbDisplayed) -> get();
+  public function ProductsHomepage_PM($page = null) {
+    if($page == null) {
+      $productsDB = Product::whereNotIn('Status',[2,3])
+                        -> take($this -> prodNumbDisplayed)
+                        -> select('ID','Name','Alias','Image','MoreImages','Price','OriginalPrice','PromotionPrice','Quantity','PromotionPackageID', 'Status') 
+                        -> get(); 
+    }else {
+      $productsDB = Product::whereNotIn('Status',[2,3]) 
+                          -> skip(($page - 1) * $this -> prodNumbDisplayed)
+                          -> take($this -> prodNumbDisplayed) 
+                          -> select('ID','Name','Alias','Image','MoreImages','Price','OriginalPrice','PromotionPrice','Quantity','PromotionPackageID', 'Status')
+                          -> get();
+    }
+    
+    $products = array();
+    foreach($productsDB as $prod) {
+      $prodDetailM = new ProductDetailModel();
+      $prodDetailM -> ProductsForHomepage_PDM($prod);
+      array_push($products, $prodDetailM);
+    }
     return $products;
   }
 
