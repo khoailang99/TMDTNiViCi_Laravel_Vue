@@ -718,7 +718,7 @@
 }
 .css-7bc7d3 {
   margin: 0px 0.2rem;
-  width: 30px;
+  @include prefix.flex();
   height: 30px;
 }
 .css-83b632 {
@@ -728,7 +728,7 @@
   display: flex;
   cursor: unset;
   z-index: 0;
-  margin: auto;
+  margin-right: 5px;
   border-radius: 4px;
   border: 1px solid rgb(224, 224, 224);
   width: 30px;

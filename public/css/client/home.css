@@ -797,7 +797,7 @@
 
 .css-7bc7d3 {
   margin: 0px 0.2rem;
-  width: 30px;
+  display: flex;
   height: 30px;
 }
 
@@ -808,7 +808,7 @@
   display: flex;
   cursor: unset;
   z-index: 0;
-  margin: auto;
+  margin-right: 5px;
   border-radius: 4px;
   border: 1px solid #e0e0e0;
   width: 30px;
