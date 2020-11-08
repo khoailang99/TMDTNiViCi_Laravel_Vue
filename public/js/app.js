@@ -2122,12 +2122,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['list_products'],
+  data: function data() {
+    return {
+      showNumbProdsRemain: 15,
+      // Những sản phẩm nào có số lượng tồn < 15 thì hiển thị thông báo
+      freeShip: 500000 // Sản phẩm nào có giá bán > 500.000đ thì đc freesShip
+
+    };
+  },
   mounted: function mounted() {
     console.log(this.list_products);
     console.log('Component Products Mounted.');
   },
-  destroyed: function destroyed() {
-    console.log("Đã hủy bỏ danh sách sản phẩm cũ!");
+  updated: function updated() {
+    console.log("Danh sách cũ đã đc update!");
+    console.log(this.list_products);
+  },
+  methods: {
+    moneyFormatVN: function moneyFormatVN(strMoney) {
+      var arrStr = parseInt(strMoney).toString().split("");
+      var len = arrStr.length - 1;
+
+      for (var i = len - 1; i >= 0; i--) {
+        arrStr[i] = (len - i) % 3 == 0 ? arrStr[i] + "." : arrStr[i];
+      }
+
+      return arrStr.join("");
+    }
   }
 });
 
@@ -38009,10 +38030,14 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "hp__pl__container css-a46f11" },
-    _vm._l(_vm.list_products, function(prod) {
+    _vm._l(_vm.list_products, function(prodD) {
       return _c(
         "a",
-        { key: prod.ID, staticClass: "css-2c7762", attrs: { href: "" } },
+        {
+          key: prodD.product.ID,
+          staticClass: "css-2c7762",
+          attrs: { href: "" }
+        },
         [
           _c(
             "div",
@@ -38021,32 +38046,157 @@ var render = function() {
                 "hp__pl__product product-card css-2e8efa d-flex flex-column align-content-center justify-content-center"
             },
             [
-              _c("div", { staticClass: "product-card__content" }, [
-                _c("div", { staticClass: "pl__prod-image css-506c78" }, [
-                  _c("picture", [
-                    _c("img", {
-                      staticClass: "css-963f94",
-                      attrs: { src: prod.Image, alt: "Flowers" }
-                    })
+              _c(
+                "div",
+                {
+                  staticClass: "product-card__content",
+                  staticStyle: { height: "100%" }
+                },
+                [
+                  _c("div", { staticClass: "pl__prod-image css-506c78" }, [
+                    _c("picture", [
+                      _c("img", {
+                        staticClass: "css-963f94",
+                        staticStyle: { height: "100%" },
+                        attrs: { src: prodD.product.Image, alt: "Flowers" }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "product-card__info" }, [
+                    _c("div", { staticClass: "pl__prod-name css-fde874" }, [
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(prodD.product.Name) +
+                          "\n            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    prodD.product.Quantity < _vm.showNumbProdsRemain
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "pc__info__numb-prod-remain css-b38591"
+                          },
+                          [
+                            _vm._v(
+                              "\n              Chỉ còn " +
+                                _vm._s(prodD.product.Quantity) +
+                                " sản phẩm\n            "
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "css-e678cc" }, [
+                      _c("div", { staticClass: "css-46c3ed" }, [
+                        _c("div", { staticClass: "css-3c7ce6" }, [
+                          _c("span", { staticClass: "price css-690a6b" }, [
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(_vm.moneyFormatVN(prodD.product.Price)) +
+                                "\n                    "
+                            ),
+                            _c("span", { staticClass: "css-9f611a" }, [
+                              _vm._v("đ")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          prodD.product.PromotionPrice != null
+                            ? _c("div", { staticClass: "css-48812d" }, [
+                                _c(
+                                  "span",
+                                  { staticClass: "promotion_price css-c5818a" },
+                                  [
+                                    _vm._v(
+                                      "\n                      " +
+                                        _vm._s(
+                                          _vm.moneyFormatVN(
+                                            prodD.product.PromotionPrice
+                                          )
+                                        ) +
+                                        "\n                      "
+                                    ),
+                                    _c("span", { staticClass: "css-9f611a" }, [
+                                      _vm._v("đ")
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "promotion_percen css-027579"
+                                  },
+                                  [
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(
+                                          Math.round(
+                                            (1 -
+                                              prodD.product.PromotionPrice /
+                                                prodD.product.Price) *
+                                              100
+                                          ) + "%"
+                                        ) +
+                                        " "
+                                    )
+                                  ]
+                                )
+                              ])
+                            : _vm._e()
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      (prodD.product.Status == 4 ||
+                      prodD.product.Price > _vm.freeShip
+                      ? true
+                      : false)
+                        ? _c("div", { staticClass: "css-950c09" }, [
+                            _vm._m(0, true)
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    prodD.pmtDetail_PmtPackage.pmtDetail.length > 0
+                      ? _c(
+                          "div",
+                          { staticClass: "pc__info__gift css-8280ac" },
+                          [
+                            _c("div", { staticClass: "css-41ab48" }, [
+                              _vm._v(" QUÀ TẶNG ")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "css-7bc7d3" },
+                              _vm._l(
+                                prodD.pmtDetail_PmtPackage.pmtDetail,
+                                function(gift, index) {
+                                  return _c(
+                                    "div",
+                                    { key: index, staticClass: "css-83b632" },
+                                    [
+                                      _c("img", {
+                                        staticClass: "css-904f61",
+                                        attrs: {
+                                          "data-src": "",
+                                          src: gift.Image,
+                                          alt: gift.Name
+                                        }
+                                      })
+                                    ]
+                                  )
+                                }
+                              ),
+                              0
+                            )
+                          ]
+                        )
+                      : _vm._e()
                   ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "product-card__info" }, [
-                  _c("div", { staticClass: "pl__prod-name css-fde874" }, [
-                    _vm._v(
-                      "\n              " + _vm._s(prod.Name) + "\n            "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "css-b38591" }, [
-                    _vm._v("\n              Chỉ còn 1 sản phẩm\n            ")
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(0, true),
-                  _vm._v(" "),
-                  _vm._m(1, true)
-                ])
-              ])
+                ]
+              )
             ]
           )
         ]
@@ -38060,60 +38210,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "css-e678cc" }, [
-      _c("div", { staticClass: "css-46c3ed" }, [
-        _c("div", { staticClass: "css-3c7ce6" }, [
-          _c("span", { staticClass: "css-690a6b" }, [
-            _vm._v("\n                    8.123.456\n                    "),
-            _c("span", { staticClass: "css-9f611a" }, [_vm._v("đ")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "css-48812d" }, [
-            _c("span", { staticClass: "css-c5818a" }, [
-              _vm._v(
-                "\n                      1.234.567\n                      "
-              ),
-              _c("span", { staticClass: "css-9f611a" }, [_vm._v("đ")])
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "css-027579" }, [_vm._v(" 9% ")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "css-950c09" }, [
-        _c("div", { staticClass: "css-49039d" }, [
-          _c("img", {
-            staticStyle: { width: "45px", height: "32px" },
-            attrs: {
-              src: "/Data/images/Product/Icon/free-delivery.svg",
-              alt: ""
-            }
-          })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "css-8280ac" }, [
-      _c("div", { staticClass: "css-41ab48" }, [_vm._v(" QUÀ TẶNG ")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "css-7bc7d3" }, [
-        _c("div", { staticClass: "css-83b632" }, [
-          _c("img", {
-            staticClass: "css-904f61",
-            attrs: {
-              "data-src": "",
-              src:
-                "https://lh3.googleusercontent.com/joith777IiUPvSztaoEOH0UgTyRQiBTuV3IclRHWF0Uj8Y7bep8CxSCU4iYqAmetPCbZJ-JJqODsdgc9nw",
-              alt: "Khung mâm nghiêng - Từ 19” - 42″ M43N"
-            }
-          })
-        ])
-      ])
+    return _c("div", { staticClass: "css-49039d free-ship" }, [
+      _c("img", {
+        staticStyle: { width: "45px", height: "32px" },
+        attrs: { src: "/Data/images/Product/Icon/free-delivery.svg", alt: "" }
+      })
     ])
   }
 ]

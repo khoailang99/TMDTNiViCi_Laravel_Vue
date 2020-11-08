@@ -1,47 +1,47 @@
 <template>
   <div class="hp__pl__container css-a46f11">
-    <a v-for="prod of list_products" v-bind:key="prod.ID" href="" class="css-2c7762">
+    <a v-for="prodD of list_products" v-bind:key="prodD.product.ID" href="" class="css-2c7762">
       <div class="hp__pl__product product-card css-2e8efa d-flex flex-column align-content-center justify-content-center">
-        <div class="product-card__content">
+        <div class="product-card__content" style="height: 100%;">
           <div class="pl__prod-image css-506c78">
             <picture>
-              <img v-bind:src="prod.Image" alt="Flowers" class="css-963f94">
+              <img v-bind:src="prodD.product.Image" alt="Flowers" class="css-963f94" style="height: 100%;">
             </picture>
           </div>
           <div class="product-card__info">
             <div class="pl__prod-name css-fde874">
-              {{ prod.Name }}
+              {{ prodD.product.Name }}
             </div>
-            <div class="css-b38591">
-              Chỉ còn 1 sản phẩm
+            <div v-if="prodD.product.Quantity < showNumbProdsRemain" class="pc__info__numb-prod-remain css-b38591">
+              Chỉ còn {{ prodD.product.Quantity }} sản phẩm
             </div>
             <div class="css-e678cc">
               <div class="css-46c3ed">
                 <div class="css-3c7ce6">
-                  <span class="css-690a6b">
-                    8.123.456
+                  <span class="price css-690a6b">
+                    {{ moneyFormatVN(prodD.product.Price)}}
                     <span class="css-9f611a">đ</span>
                   </span>
-                  <div class="css-48812d">
-                    <span class="css-c5818a">
-                      1.234.567
+                  <div v-if="prodD.product.PromotionPrice != null" class="css-48812d">
+                    <span class="promotion_price css-c5818a">
+                      {{ moneyFormatVN(prodD.product.PromotionPrice) }}
                       <span class="css-9f611a">đ</span>
                     </span>
-                    <span class="css-027579"> 9% </span>
+                    <span class="promotion_percen css-027579"> {{ Math.round((1 - prodD.product.PromotionPrice/prodD.product.Price)*100) + "%" }} </span>
                   </div>
                 </div>
               </div>
-              <div class="css-950c09">
-                <div class="css-49039d">
+              <div v-if="prodD.product.Status == 4 || prodD.product.Price > freeShip ? true : false" class="css-950c09">
+                <div class="css-49039d free-ship">
                   <img src="/Data/images/Product/Icon/free-delivery.svg" alt="" style="width: 45px; height: 32px">
                 </div>
               </div>
             </div>
-            <div class="css-8280ac">
+            <div v-if="prodD.pmtDetail_PmtPackage.pmtDetail.length > 0" class="pc__info__gift css-8280ac">
               <div class="css-41ab48"> QUÀ TẶNG </div>
               <div class="css-7bc7d3">
-                <div class="css-83b632">
-                  <img data-src="" src="https://lh3.googleusercontent.com/joith777IiUPvSztaoEOH0UgTyRQiBTuV3IclRHWF0Uj8Y7bep8CxSCU4iYqAmetPCbZJ-JJqODsdgc9nw" class="css-904f61" alt="Khung mâm nghiêng - Từ 19” - 42″ M43N">
+                <div v-for= "(gift, index) in prodD.pmtDetail_PmtPackage.pmtDetail" :key="index" class="css-83b632">
+                  <img data-src="" :src="gift.Image" class="css-904f61" :alt="gift.Name">
                 </div>
               </div>
             </div>
@@ -55,12 +55,29 @@
 <script>
   export default {
     props: ['list_products'],
+    data: function() {
+      return {
+        showNumbProdsRemain: 15, // Những sản phẩm nào có số lượng tồn < 15 thì hiển thị thông báo
+        freeShip: 500000, // Sản phẩm nào có giá bán > 500.000đ thì đc freesShip
+      }
+    },
     mounted: function(){
       console.log(this.list_products)
       console.log('Component Products Mounted.')
     },
-    destroyed: function() {
-      console.log("Đã hủy bỏ danh sách sản phẩm cũ!");
+    updated: function() {
+      console.log("Danh sách cũ đã đc update!");
+      console.log(this.list_products)
+    },
+    methods: {
+      moneyFormatVN: function(strMoney) {
+        let arrStr = parseInt(strMoney).toString().split("");
+          let len = arrStr.length - 1;
+          for (let i = len - 1; i >= 0; i--) {
+            arrStr[i] = ((len - i) % 3 == 0) ? arrStr[i] + "." : arrStr[i];
+          }
+        return arrStr.join("");
+      }
     }
   }
 </script>
