@@ -2343,8 +2343,9 @@ __webpack_require__.r(__webpack_exports__);
     console.log(this.list_products);
     console.log('Component Products Mounted.');
   },
-  updated: function updated() {// console.log("Danh sách cũ đã đc update!");
-    // console.log(this.list_products)
+  updated: function updated() {
+    console.log("Danh sách cũ đã đc update!");
+    console.log(this.list_products);
   },
   methods: {
     moneyFormatVN: function moneyFormatVN(strMoney) {
