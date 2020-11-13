@@ -554,7 +554,6 @@
   @include prefix.flex-box-pack(justify);
   @include prefix.flex-justifyContent(space-between);
   @include prefix.flex-alignItem(center);
-  padding: 0 1rem;
 }
 .css-81293a {
   margin-right: 2rem;
@@ -921,4 +920,153 @@
       border-color: #1a21ec;
     }
   }
+}
+
+// Filter
+.css-20369a {
+  margin-bottom: 17px;
+}
+.css-bc16c0 {
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  width: 100%;
+  overflow: unset;
+}
+.css-3fba6e {
+  @include prefix.flex();
+  @include prefix.flex-justifyContent(space-between);
+  @include prefix.flex-alignItem(center);
+  padding: 16px;
+  position: relative;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.css-554658 {
+  flex: 1 0 0%;
+  min-width: 0px;
+}
+.css-361513 {
+  flex: 0 0 auto;
+  width: 81.6667%;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+.css-d763f0 {
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.css-aa3ad4 {
+  @include prefix.flex();
+  @include prefix.flex-justifyContent(center);
+  @include prefix.flex-alignItem(center);
+  font-size: 14px;
+  line-height: 29px;
+  height: 30px;
+  border-radius: 999px;
+  width: fit-content;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  outline: 0px;
+  white-space: nowrap;
+  padding: 0px 12px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  margin-bottom: 0.25rem;
+  margin-top: 0.25rem;
+  color: rgb(20, 53, 195);
+  border: 1px solid rgb(20, 53, 195);
+  background: rgb(230, 238, 255) !important;
+}
+.css-2ba442 {
+  font-size: 16px;
+  padding-left: 5px;
+  margin-top: -2px;
+}
+.css-a9a90c {
+  color: unset;
+  text-decoration: unset;
+}
+.css-a94d62 {
+  float: right;
+  text-decoration: unset;
+  cursor: pointer;
+  color: rgb(239, 39, 65) !important;
+}
+.css-844e64 {
+  position: absolute;
+  left: 0px;
+  margin-top: 2px;
+  width: 3px;
+  height: 21px;
+  background-color: rgb(51, 51, 51);
+}
+.css-56cb1d {
+  color: rgb(51, 51, 51);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.css-strwe {
+  padding: 1rem;
+}
+.css-0f4d54 {
+  @include prefix.flex();
+  @include prefix.flex-wrap(wrap);
+  margin-bottom: 0.25rem;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.css-81e6e6 {
+  flex: 0 0 auto;
+  width: 12.5%;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+.css-987424 {
+  font-weight: 600;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.css-0d472a {
+  flex: 0 0 auto;
+  width: 83.3333%;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  height: 2.5rem;
+  overflow: hidden;
+}
+.css-8a614d {
+  border-radius: 4px;
+  display: inline-block;
+  border: 1px solid rgb(224, 224, 224);
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  overflow: hidden;
+  margin-right: 0.5rem;
+  margin-bottom: 0.3rem;
+  padding: 0.375rem 1.25rem;
+  color: rgb(51, 51, 51);
+  cursor: pointer;
+}
+.css-400bf0 {
+  font-weight: bold;
+  @include prefix.flex();
+  @include prefix.flex-justifyContent(flex-start);
+  @include prefix.flex-alignItem(center);
+  @include prefix.flex-box-pack(start);
+  font-size: 0.875rem;
 }
