@@ -84,8 +84,8 @@
                                                 <div class="css-167cc7">
                                                     @foreach ($prodTypeList as $prodT)
                                                         <div v-on:mouseover='mouseoverMI({!! json_encode($prodT -> childLv) !!})' data-track-content="true" data-content-region-name="megaMenu" data-content-name="Laptop & Macbook" class="css-036586">
-                                                            <a class="css-270e69">
-                                                                <div class="css-7ef8c6">
+                                                            <router-link :to="{name: 'productCategory', params: {f_lv: 1, pt_id: {!! $prodT -> fatherLv -> ID !!} }}" class="css-270e69">
+                                                                <div class="css-7ef8c6" @click=(updateProdListByFilter({!! $prodT -> fatherLv -> ID !!}))>
                                                                     <span>
                                                                         <div height="22" width="22" class="css-b45459">
                                                                             <picture>
@@ -95,14 +95,14 @@
                                                                     </span>
                                                                     <div class="css-f73e11"> {{ $prodT -> fatherLv -> Name }}</div>
                                                                 </div>
-                                                            </a>
+                                                            </router-link>
                                                         </div>
                                                     @endforeach
                                                 </div>
                                             </div>
 
                                             <!-- Menu panel -->
-                                            <menu-panel-component v-if="isHoveredOver" @changeh-hover-state-menuitem='mouseleaveMI()' v-bind:secondary_tertiary_pt="listSTPT"></menu-panel-component>
+                                            <menu-panel-component v-if="isHoveredOver" @changeh-hover-state-menuitem='mouseleaveMI()' @update-prod-list-filter='updateProdListByFilter($event)' v-bind:secondary_tertiary_pt="listSTPT"></menu-panel-component>
                                         </div>
                                     </div>
                                 </div>
@@ -202,6 +202,13 @@
         <div v-if="prodCatalogBtnClicked" @click="prodCatalogBtnClicked= false" class="css-0fb746"></div>
 
         <main class="py-4">
+            <!-- Bộ lọc -->
+            <div v-show="filterDisplay" class="filter_area">
+                <!-- route outlet -->
+                <!-- component matched by the route will render here -->
+                <router-view name="productCatalogFilters" @hide_filters="hideFilters($event)"></router-view>
+            </div>
+
             @yield('content')
         </main>
 
