@@ -8,6 +8,13 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+// Import Vuex store
+const store = require('./store/index').default; 
+
+//Import View Router
+const VueRouter = require('vue-router').default;
+Vue.use(VueRouter);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -36,6 +43,8 @@ Vue.directive('click-outside', {
 Vue.component('menu-panel-component', require('./components/MenuPanelComponent.vue').default);
 Vue.component('products-component', require('./components/ProductsComponent.vue').default);
 Vue.component('pagination-component', require('./components/PaginationComponent.vue').default);
+const FilterComponent = Vue.component('filter-component', require('./components/FilterComponent.vue').default);
+// const vtest = Vue.component('test-component', require('./components/TestComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -43,7 +52,30 @@ Vue.component('pagination-component', require('./components/PaginationComponent.
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const routes = [
+    { 
+        path: '/product-category/lv/:f_lv/:pt_id/', 
+        name: 'productCategory', 
+        components: {
+            productCatalogFilters: FilterComponent,
+        },
+        props: {
+            default: true,
+            // function mode, more about it below
+            productCatalogFilters: route => ({f_lv: route.params.f_lv,  pt_id: route.params.pt_id })
+        },
+        
+    }
+];
+
+const router = new VueRouter({
+    mode: 'history',
+    routes
+});
+
 const app = new Vue({
+    router,
+    store,
     el: '#app',
     mounted: function() {
         let scriptJs = document.createElement('script');
@@ -55,7 +87,7 @@ const app = new Vue({
     },
     data: function() {
         return {
-            listProducts: null,
+            listProducts: this.$store.state.products_homepage,
             // Các biến cho phân trang
             pageP: 1, 
             defaultPageNumbs: 9,
@@ -64,6 +96,7 @@ const app = new Vue({
             listSTPT: null,
             isHoveredOver: false,
             prodCatalogBtnClicked: false,
+            filterDisplay: false,
         }  
     },
     watch: {
@@ -76,11 +109,16 @@ const app = new Vue({
                 }
             })
             .then(function (response) {
-              vm.listProducts = response.data.listProducts;
+            //   vm.listProducts = response.data.listProducts;
+              vm.$store.commit("changeProdHomepage", response.data.listProducts);
             })
             .catch(function (error) {
               console.log("Lỗi phân trang!")
             });
+        },
+        "$store.state.products_homepage"(nv){
+            console.log("State.Products_Homepage đã đc thay đổi!")
+            this.listProducts= this.$store.state.products_homepage
         }
     },
     methods: {
@@ -94,7 +132,7 @@ const app = new Vue({
             this.isHoveredOver = true;
         },
         mouseleaveMI: function() {
-            this.isHoveredOver = false;
+            // this.isHoveredOver = false;
         }, 
         runResPagination: function() {
             let objApp = this;
@@ -115,6 +153,12 @@ const app = new Vue({
         },
         pageChangePagination: function(page) {
             this.pageP = page;
+        },
+        updateProdListByFilter: function(pt_c_id) {
+            this.turnOffProdCDropDown();
+        },
+        hideFilters: function(bool_fd) {
+            this.filterDisplay = bool_fd;
         }
     }
 });
