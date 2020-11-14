@@ -2,6 +2,7 @@
 
 namespace App\Models\Product;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Category\ProductCategoryModel;
@@ -36,8 +37,38 @@ class Product extends Model
       $prodDetailM -> ProductsForHomepage_PDM($prod);
       array_push($products, $prodDetailM);
     }
+    
     return $products;
   }
+
+  // Lấy các sản phẩm theo ID và cấp độ loại sản phẩm hoặc danh mục
+  public function getProds_Category_ProdType($level = 2, $c_pt_ID = 49) {
+    if($level == 1) { // Loại sản phẩm cấp 1 
+      $prodCollection = DB::table('ProductCategories as pc') -> where('Relationship','like','%,'.$c_pt_ID.',%')
+                    -> join ('Products as prod', 'prod.CategoryID', '=', 'pc.ID')
+                    -> whereNotIn('prod.Status',[2,3])
+                    -> select('prod.ID','prod.Name','prod.Alias','prod.Image','prod.MoreImages','prod.Price','prod.OriginalPrice','prod.PromotionPrice','prod.Quantity','prod.PromotionPackageID', 'prod.Status') 
+                    -> get();
+    } else if($level == 3) { // Danh mục or loại sản phẩm cấp 3
+      $prodCollection = $this -> getProds_Category_ProdType_lv3($c_pt_ID);
+    } else { // Danh mục or loại sản phẩm cấp 2
+      $prodCollection = collect(array());
+      $childItems = DB::table('ProductCategories as pc') -> where('ParentID',$c_pt_ID) -> get();
+      foreach($childItems as $aSubItem) {
+        $prodCollection = $prodCollection -> concat($this -> getProds_Category_ProdType_lv3($aSubItem -> ID));
+      }
+    }
+    return $prodCollection;
+  }
+
+  // Lấy các sản phẩm theo danh mục hoặc loại sản phẩm cấp 3
+  public function getProds_Category_ProdType_lv3($aSubItemID) {
+    return DB::table('Products as prod') -> whereNotIn('prod.Status',[2,3])
+            -> where('CategoryID', $aSubItemID)
+            -> orWhere('Category','like','%,'.$aSubItemID.',%')
+            -> select('prod.ID','prod.Name','prod.Alias','prod.Image','prod.MoreImages','prod.Price','prod.OriginalPrice','prod.PromotionPrice','prod.Quantity','prod.PromotionPackageID', 'prod.Status')
+            -> get();
+  } 
 
   /**
    * Get the value of prodNumbDisplayed
