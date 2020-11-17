@@ -56,7 +56,7 @@ class HomeController extends Controller
         $grossProd = $product -> totalNumbProdDisplayed();
         $totalPages = ceil($grossProd / $product -> getProdNumbDisplayed());
 
-        $product -> getProds_Category_ProdType();
+        // $product -> getProds_Category_ProdType();
 
         \Debugbar::warning("Cac danh muc san pham cap 1!");
         \Debugbar::info($prodTypeList);
@@ -64,6 +64,7 @@ class HomeController extends Controller
         return view('home', ['prodTypeList' => $prodTypeList, 'listProducts' => $products_M, 'totalProd' => $grossProd, 'totalPages' => $totalPages ]);
     }
 
+    // Lấy các sản phẩm theo phân trang
     public function getAllProdByPagination(Request $request) {
         $page = $request -> input('page');
         $prodNumbDisplayed = $request -> input('prodNumbDisplayed');
@@ -77,16 +78,20 @@ class HomeController extends Controller
     }
 
     // Lấy các sản phẩm theo danh mục hoặc loại sp
-    public function getProds_Category_ProdType() {
-        $level = 2;
-        $c_pt_ID = 65;
-        if($level == 1) { // Loại sản phẩm cấp 1 
+    public function getProds_Category_ProdType(Request $request) {
+        $f_lv = $request -> input('f_lv');
+        $pt_c_ID = $request -> input('pt_c_ID');
+        $page = $request -> input('page') ? $request -> input('page') : 1;
 
-        }else if($level == 3) { // Danh mục or loại sản phẩm cấp 3
+        \Debugbar::warning("Cac bo loc cua danh muc san pham cap !" );
+        \Debugbar::info($f_lv);
+        \Debugbar::warning("Ma cac bo loc cua danh muc san pham!" );
+        \Debugbar::info($pt_c_ID);
+        \Debugbar::warning("Cac bo loc cua danh muc san pham cap !" );
+        \Debugbar::info($page);
 
-        }else { // Danh mục or loại sản phẩm cấp 2
-
-        }
+        $product = new Product();
+        return $product -> getProds_Category_ProdType_PM($f_lv, $pt_c_ID, $page);
     }
 
     // Lấy bộ lọc cho loại sản phẩm
@@ -104,55 +109,19 @@ class HomeController extends Controller
         return $pc_M -> filters;
     }
 
+    public function test() {
+        \Debugbar::warning("Xin chao em" );
+    }
+
     // Lấy các sản phẩm theo bộ lọc
     public function getProductsFilter(Request $request) {
-        $prodType = $request->input('prod_type');
-        $filters = json_decode($request->input('filters'));
+        $prodType = $request -> input('prod_type');
+        $filters = json_decode($request -> input('filters'));
+        $page = $request -> input('page') ? $request -> input('page') : 1;
 
-        $products = DB::table('ProductCategories as PC') 
-                    -> where('PC.IsCategory', 0)
-                    -> where('PC.Relationship', 'like', '%,'.$prodType.',%')
-                    -> join('Products as Prod', 'PC.ID', '=', 'Prod.CategoryID')
-                    -> whereNotIn('prod.Status',[2,3])
-                    -> join('Product_Specifications as PS', 'Prod.ID', '=', 'PS.ProductID')
-                    -> where('PS.SpecificationID', $filters[0] -> filterID)
-                    -> whereIn('PS.Value', $filters[0] -> values)
-                    -> select('Prod.ID','Prod.Name','Prod.Alias','Prod.Image','Prod.MoreImages','Prod.Price','Prod.OriginalPrice',
-                        'Prod.PromotionPrice','Prod.Quantity','Prod.PromotionPackageID', 'Prod.Status',
-                        'PS.SpecificationID', 'PS.ProductID', 'PS.Value')
-                    -> get();
 
-        array_shift($filters);
-
-        if(count($filters) > 0) {
-            $productsFiltered = $products -> reject(function($prod, $key) use ($filters){
-                $numbProdSatisfyFilter = 0;
-                foreach($filters as $filter) {
-                    $numbProdSatisfyFilter = DB::table('Product_Specifications as PS') 
-                                        -> where('PS.ProductID', $prod -> ID)
-                                        -> where('PS.SpecificationID', $filter -> filterID)
-                                        -> whereIn('PS.Value', $filter -> values)
-                                        -> count();
-                    if($numbProdSatisfyFilter == 0) {
-                        break;
-                        return;
-                    }
-                }
-                if($numbProdSatisfyFilter == 0) {
-                    return true;
-                }
-                $prodDetailM = new ProductDetailModel();
-                $prodDetailM -> ProductsForHomepage_PDM($prod);
-            });
-
-            \Debugbar::warning("Các sản phẩm cuối cùng sau khi lọc và bộ lọc >= 2!");
-            \Debugbar::info($productsFiltered);
-            return $this -> ProductsHomepage_HC($productsFiltered);
-        }
-        \Debugbar::warning("Các sản phẩm thỏa mãn bộ lọc 1 là: ");
-        \Debugbar::info($products);
-
-        return $this -> ProductsHomepage_HC($products);
+        $product = new Product();
+        return $product -> getProductsFilter_PM($prodType, $filters, $page);
     } 
 
     public function ProductsHomepage_HC($filteredProds) {
@@ -165,7 +134,46 @@ class HomeController extends Controller
         return $products;
     }
 
-    public function demoTest() {
-        return view("productCategory");
+    // Tìm kiếm sản phẩm
+    public function SearchProducts_HC(Request $request) {
+        $infoSearch = $request -> input('info_searched');
+        $page = $request -> input('page') ? $request -> input('page') : 1;
+        // showAll: 0: hiển thị tất cả sản phẩm, 1: Hiển thị 15 sản phẩm 
+        $showAll = ($request -> input('show_all')) == 0 ? 15 : 0;
+        
+        \Debugbar::warning("Thông tin được tìm kiếm: ");
+        \Debugbar::info($infoSearch);
+
+        $product = new Product();
+        
+        return $product -> SearchProducts_PM($showAll, $infoSearch, $page);
     }
+
+    // Sắp xếp sản phẩm
+    public function ProdArrangements(Request $request) {
+        
+    }
+
+    // Xem chi tiết sản phẩm
+    public function ProductDetails($prodID) {
+        $prodTypeList = array();
+        $ancentralLevelProdT = $this -> getListProdTAccordTFather(0);
+        foreach($ancentralLevelProdT as $prodT) {
+            $aSuperPT = new ProductTypeModel($prodT, array());
+            $prodTypeT = $this -> getListProdTAccordTFather($prodT->ID);
+            foreach($prodTypeT as $prodTT) {
+                array_push($aSuperPT -> childLv, new ProductTypeModel($prodTT, $this -> getListProdTAccordTFather($prodTT->ID)));
+            }
+            array_push($prodTypeList, $aSuperPT);
+        }
+
+        $prodDetailM = new ProductDetailModel();
+        $prodDetailM -> GetProductsAccordConds(DB::table('Products as Prod') -> where('Prod.ID', '=', $prodID) -> first());
+
+        \Debugbar::warning("Chi tiết sản phẩm: ");
+        \Debugbar::info($prodDetailM);
+
+        return view('product', ['prodDetailM' => $prodDetailM, 'prodTypeList' => $prodTypeList]);
+    }
+
 }
