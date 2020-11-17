@@ -85,7 +85,7 @@
                                                     @foreach ($prodTypeList as $prodT)
                                                         <div v-on:mouseover='mouseoverMI({!! json_encode($prodT -> childLv) !!})' data-track-content="true" data-content-region-name="megaMenu" data-content-name="Laptop & Macbook" class="css-036586">
                                                             <router-link :to="{name: 'productCategory', params: {f_lv: 1, pt_id: {!! $prodT -> fatherLv -> ID !!} }}" class="css-270e69">
-                                                                <div class="css-7ef8c6" @click=(updateProdListByFilter({!! $prodT -> fatherLv -> ID !!}))>
+                                                                <div class="css-7ef8c6" @click=(updateProdListByFilter(1,{!! $prodT -> fatherLv -> ID !!}))>
                                                                     <span>
                                                                         <div height="22" width="22" class="css-b45459">
                                                                             <picture>
@@ -111,10 +111,10 @@
                     </div>
                 </div>
                 <div class="css-e30694">
-                    <div data-track-content="true" data-content-region-name="headerBar" data-content-name="searchBox" class="css-da0f8e">
+                    <div v-click-outside="hideIndicator" data-track-content="true" data-content-region-name="headerBar" data-content-name="searchBox" class="css-da0f8e">
                         <div class="css-382c89">
-                            <input type="text" class="search-input css-b75d52" placeholder="Nhập từ khoá cần tìm" role="searchbox" aria-label="Search">
-                            <button class="search-icon css-65db16" aria-label="search">
+                            <input type="text" @click="searchInputFocus()" class="search-input css-b75d52" v-model="prodSearchQuery" placeholder="Nhập từ khoá cần tìm" role="searchbox" aria-label="Search">
+                            <button @click="searchProduct(1)" class="search-icon css-65db16" aria-label="search">
                                 <span size="26" color="#FFFFFF" class="css-1c0896">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="20px" height="100%" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -124,7 +124,10 @@
                                 </span>
                             </button>
                         </div>
-                        <div class="css-7850a7"></div>
+                        <div class="css-7850a7" :class="{active: prorductsSearched != null}">
+                            <!-- Chỉ báo tìm kiếm sản phẩm -->
+                            <search-indicator-component :products_searched="prorductsSearched" @see_all_searched_prods="searchProduct(1)"></search-indicator-component>
+                        </div>
                     </div>
                 </div>
                 <div class="css-4a10cf">
