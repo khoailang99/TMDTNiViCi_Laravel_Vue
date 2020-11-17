@@ -22,8 +22,14 @@ Route::get('/prod-catalog-filters', 'HomeController@getFilters_Category_ProdType
 // Lấy sản phẩm theo bộ lọc
 Route::get('/prod-filters', 'HomeController@getProductsFilter');
 
+// Lấy sản phẩm theo danh mục hoặc loại sản phẩm
+Route::get('/prod-catalog', 'HomeController@getProds_Category_ProdType');
 
-Route::get('/test', 'HomeController@demoTest') -> name('productCategory');
+// Tìm kiếm sản phẩm
+Route::get('/search-product', 'HomeController@SearchProducts_HC');
+
+// Xem chi tiết sản phẩm
+Route::get('/prod-detail/{prodID}', 'HomeController@ProductDetails')->name('product');
 
 Auth::routes();
 
