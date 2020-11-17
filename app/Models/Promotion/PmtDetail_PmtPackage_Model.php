@@ -21,7 +21,7 @@ class PmtDetail_PmtPackage_Model
     $this -> pmtDetail = $promotions;
 
     \Debugbar::warning("Đây là gói danh sach km");
-    \Debugbar::info($this -> getPmtDetail($promotions)); 
+    \Debugbar::info($this -> pmtDetail); 
     return $this;  
   }
 
