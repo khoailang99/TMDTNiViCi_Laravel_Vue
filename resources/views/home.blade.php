@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="home_page__product-list css-5542cb">
-		<div class="css-b59019">
+		<div class="css-b59019" style="display: none;">
 			<div id="js-sort-bar" class="css-f2498e"></div>
 			<div class="css-3fb406">
 				<div class="css-81293a"> Sắp xếp theo </div>
@@ -43,9 +43,19 @@
 				</div>
 			</div>
 		</div>
-		<products-component :list_products='listProducts != null ? listProducts : @json($listProducts)'></products-component>
+		<div v-show="productExists">
+			<products-component :list_products='listProducts != null ? listProducts : @json($listProducts)'></products-component>
+		</div>
+		
+		<!-- Hiển thị thông báo ko tìm thấy sản phẩm -->
+		<div class="css-418419" :class="{active : !productExists}" >
+			<div width="200" height="200" class="css-c2ed66">
+				<img src="/Data/images/Product/no-products-found.png" alt="">
+			</div>
+			<div class="css-9cba25"> Không tìm thấy sản phẩm </div>
+		</div>
 	</div>
-	<div class="home_page__pagination">
+	<div v-show="productExists" class="home_page__pagination">
 		<pagination-component :gross_product="{!! $totalProd !!}" :total_pages="{!! $totalPages !!}" :default_page_numbs="defaultPageNumbs" @page_change_pagination="pageChangePagination($event)"></pagination-component>
 	</div>
 @endsection
