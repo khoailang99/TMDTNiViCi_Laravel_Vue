@@ -1989,11 +1989,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["f_lv", "pt_id"],
   data: function data() {
     return {
-      newFilter: this.pt_id,
       filters: null,
       selectedFilters: []
     };
@@ -2003,8 +2020,9 @@ __webpack_require__.r(__webpack_exports__);
     this.getNewFilter();
   },
   mounted: function mounted() {
-    console.log("Component Filter Mounted.");
-    console.log(this.$store.state.user);
+    console.log("Component Filter Mounted."); // Cập nhật loại phân trang ở trên store
+
+    this.$store.commit("changePagingType_P", 3); // 3: Phân trang cho các sản phẩm đã đc lọc
   },
   updated: function updated() {
     console.log("FilterComponent đã được cập nhật!");
@@ -2029,37 +2047,93 @@ __webpack_require__.r(__webpack_exports__);
         console.log("Lỗi lấy bộ lọc!");
       });
     },
-    getProductsFilter: function getProductsFilter(filterID, filterValue) {
-      this.updateSelectedFilters(filterID, filterValue);
-      var vm = this;
-      axios.get("/prod-filters", {
-        params: {
-          prod_type: vm.pt_id,
-          filters: JSON.stringify(vm.selectedFilters)
+    getProductsFilter: function getProductsFilter(filterID, filterValue, elemHTML) {
+      if (elemHTML) {
+        if ($(elemHTML).attr('class').indexOf('active') > 0) {
+          $(elemHTML).toggleClass('active').children('div.css-4ec51c', 'div.css-d6d985').remove();
+        } else {
+          $(elemHTML).toggleClass('active').append('<div class="css-4ec51c"></div><span class="css-d6d985"> &#x2713; </span>');
         }
-      }).then(function (response) {
-        console.log("Lấy các sản phẩm qua bộ lọc từ DB: ");
-        console.log(response.data);
-        vm.$store.commit("changeProdHomepage", response.data);
-      })["catch"](function (error) {
-        console.log("Lỗi lấy sản phẩm theo bộ lọc!");
-        console.log(error);
-      });
+      }
+
+      this.updateSelectedFilters(filterID, filterValue, elemHTML);
+      var vm = this;
+      var filtersProdType = {
+        prod_type: vm.pt_id,
+        filters: JSON.stringify(vm.selectedFilters.map(function (filter) {
+          return {
+            filterID: filter.filterID,
+            values: filter.values.map(function (value) {
+              return value.filterValue;
+            })
+          };
+        }))
+      };
+
+      if (this.selectedFilters.length > 0) {
+        axios.get("/prod-filters", {
+          params: filtersProdType
+        }).then(function (response) {
+          vm.$store.commit("changeProdHomepage", response.data.listProducts);
+
+          if (vm.$store.state.pagination.paging_type != 3) {
+            vm.$store.commit("changePagingType_P", 3); // 3: Phân trang cho các sản phẩm đã đc lọc
+          }
+
+          vm.$store.commit("changeTotalNumbPage_P", response.data.totalPages);
+          vm.$store.commit("changeFiltersProdType_F", filtersProdType);
+          console.log("Total_pages - " + response.data.totalPages);
+        })["catch"](function (error) {
+          console.log("Lỗi lấy sản phẩm theo bộ lọc!");
+          console.log(error);
+        });
+      }
     },
-    updateSelectedFilters: function updateSelectedFilters(filterType, filterValue) {
+    updateSelectedFilters: function updateSelectedFilters(filterType, filterValue, elemHTML) {
       var filterIndex = this.selectedFilters.findIndex(function (value, index) {
         return value.filterID == filterType;
       });
+      var filter = this.selectedFilters[filterIndex];
 
       if (filterIndex >= 0) {
         // Thêm giá trị lọc mới vào bộ lọc đã có giá trị đc khởi tạo
-        this.selectedFilters[filterIndex].values.push(filterValue);
+        var indexFilterValue = -1;
+        filter.values.forEach(function (value, index) {
+          if (value.filterValue == filterValue) {
+            indexFilterValue = index;
+            return;
+            console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+          }
+        });
+        console.log("");
+        console.log("filterType");
+        console.log(indexFilterValue);
+        console.log(filter.values);
+        console.log("");
+
+        if (indexFilterValue >= 0) {
+          if (filter.values.length == 1) {
+            this.selectedFilters.splice(filterIndex, 1);
+            return;
+          }
+
+          filter.values.splice(indexFilterValue, 1);
+        } else {
+          filter.values.push({
+            filterValue: filterValue,
+            elemHTML: elemHTML
+          });
+        }
+
         return;
       }
 
       this.selectedFilters.push({
         filterID: filterType,
-        values: [filterValue]
+        values: [{
+          filterValue: filterValue,
+          elemHTML: elemHTML
+        }]
       });
     },
     delSelectedFilterValue: function delSelectedFilterValue(filterIndex, indexValue) {
@@ -2085,11 +2159,33 @@ __webpack_require__.r(__webpack_exports__);
     $route: function $route(to, from) {
       this.getNewFilter(); // Lấy bộ lọc mới khi route hiện tại chuyển sang route khác
 
-      this.delSelectedFilterValue(null, null, true); // Xóa bộ lọc của route cũ
+      this.selectedFilters.splice(0); // Xóa bộ lọc của route cũ
     },
     selectedFilters: function selectedFilters() {
-      console.log("Bộ lọc đc chọn đã đc cập nhật!");
-      console.log(this.selectedFilters);
+      if (this.selectedFilters.length == 0) {
+        var vm = this;
+        axios.get("/prod-catalog", {
+          params: {
+            f_lv: vm.f_lv,
+            pt_c_ID: vm.pt_id,
+            page: 1
+          }
+        }).then(function (response) {
+          vm.$store.commit("changeProdHomepage", response.data.listProducts);
+          vm.$store.commit("changeTotalNumbPage_P", response.data.total_pages);
+
+          if (vm.$store.state.pagination.paging_type != 2) {
+            vm.$store.commit("changePagingType_P", 2); // 2: Phân trang cho các sản phẩm theo danh mục hoặc loại sản phẩm
+          }
+
+          vm.$store.commit("changeProdCatalog", {
+            lv_pt_c: vm.f_lv,
+            pt_c_ID: vm.pt_id
+          });
+        })["catch"](function (error) {
+          console.log("Lỗi chíp!");
+        });
+      }
     }
   }
 });
@@ -2157,8 +2253,11 @@ __webpack_require__.r(__webpack_exports__);
     changeHoverStateOnMI: function changeHoverStateOnMI() {
       this.$emit('changeh-hover-state-menuitem');
     },
-    updateProdListByFilter: function updateProdListByFilter(pt_c_id) {
-      this.$emit('update-prod-list-filter', pt_c_id);
+    updateProdListByFilter: function updateProdListByFilter(lv_c_pt, pt_c_id) {
+      this.$emit('update-prod-list-filter', {
+        lv_c_pt: lv_c_pt,
+        pt_c_id: pt_c_id
+      });
     }
   },
   mounted: function mounted() {
@@ -2179,6 +2278,49 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2210,49 +2352,82 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['gross_product', 'total_pages', 'default_page_numbs'],
+  props: ["gross_product", "total_pages", "default_page_numbs"],
   data: function data() {
     return {
       pageP: 1,
-      numbPages: this.total_pages > this.default_page_numbs ? this.default_page_numbs : this.total_pages,
+      totalPages: this.total_pages,
+      numbPages: 0,
+      defaultPageNumbs: this.default_page_numbs,
       arrPagesPagination: [],
       breakPSTS: 0,
       middleIndex: 0
     };
   },
+  created: function created() {
+    this.$store.commit("changeTotalNumbPage_P", this.totalPages);
+    console.log("Trước khi mouted pagingCompoent thì total_pages + default_page: " + this.$store.state.pagination.total_pages + " - " + this.$store.state.pagination.default_page_numbs);
+  },
   mounted: function mounted() {
-    this.breakPSTS = Math.ceil(this.numbPages / 2) - 2;
-    this.middleIndex = Math.ceil(this.numbPages / 2);
     this.initArrPagesPagination();
   },
   methods: {
+    getProducts: function getProducts() {
+      var vm = this;
+      var url_params = this.getUrlParams();
+      axios.get(url_params.url, {
+        params: url_params.value
+      }).then(function (response) {
+        vm.$store.commit("changeProdHomepage", response.data.listProducts);
+        console.log("Lấy sản phẩm theo phân trang ở PagingComponent đã làm việc!");
+        console.log(response.data.listProducts);
+        console.log(vm.pageP);
+      })["catch"](function (error) {
+        console.log("Lỗi phân trang!");
+      });
+    },
     pageChangePagination: function pageChangePagination(pagingBtnIsClicked) {
-      if (pagingBtnIsClicked < 1 || pagingBtnIsClicked > this.total_pages) {
+      if (pagingBtnIsClicked < 1 || pagingBtnIsClicked > this.totalPages) {
         return;
       }
 
       this.pageP = pagingBtnIsClicked;
-      this.$emit('page_change_pagination', pagingBtnIsClicked);
+      this.getProducts();
 
       if (this.numbPages >= this.default_page_numbs) {
         this.handlePagination(this.pageP);
       }
     },
     initArrPagesPagination: function initArrPagesPagination() {
+      this.totalPages = this.$store.state.pagination.total_pages;
+      this.defaultPageNumbs = this.$store.state.pagination.default_page_numbs;
+      this.numbPages = this.totalPages > this.defaultPageNumbs ? this.defaultPageNumbs : this.totalPages;
+      this.breakPSTS = Math.ceil(this.numbPages / 2) - 2;
+      this.middleIndex = Math.ceil(this.numbPages / 2);
+      this.pageP = 1;
       var orderPaginBtn;
 
+      if (this.arrPagesPagination.length > 0) {
+        this.arrPagesPagination.splice(0);
+      }
+
       for (var i = 1; i <= this.numbPages; i++) {
-        orderPaginBtn = i == this.numbPages ? this.total_pages : i == this.numbPages - 1 && this.total_pages > this.numbPages ? "..." : i;
+        orderPaginBtn = i == this.numbPages ? this.totalPages : i == this.numbPages - 1 && this.totalPages > this.numbPages ? "..." : i;
         this.arrPagesPagination.push(orderPaginBtn);
       }
+
+      console.log("");
+      console.log("paging!");
+      console.log(this.arrPagesPagination);
+      console.log("");
     },
     handlePagination: function handlePagination(page) {
       var txtPagingBtn = 0;
-      var lastPages = this.total_pages + 3 - this.numbPages;
+      var lastPages = this.totalPages + 3 - this.numbPages;
       this.arrPagesPagination.forEach(function (elem, index) {
         if (page - 1 <= this.breakPSTS) {
-          txtPagingBtn = ++index == this.numbPages - 1 ? "..." : index == this.numbPages ? this.total_pages : index;
-        } else if (this.total_pages - page <= this.breakPSTS) {
+          txtPagingBtn = ++index == this.numbPages - 1 ? "..." : index == this.numbPages ? this.totalPages : index;
+        } else if (this.totalPages - page <= this.breakPSTS) {
           txtPagingBtn = ++index == 2 ? "..." : index == 1 ? 1 : lastPages++;
         } else {
           txtPagingBtn = ++index == 1 || index == this.numbPages ? index == 1 ? 1 : this.total_pages : Math.abs(this.middleIndex - index) > this.breakPSTS - 1 ? "..." : page - (this.middleIndex - index);
@@ -2260,6 +2435,56 @@ __webpack_require__.r(__webpack_exports__);
 
         this.arrPagesPagination[index - 1] = txtPagingBtn;
       }.bind(this));
+    },
+    getUrlParams: function getUrlParams() {
+      var arr_urls_params = [{
+        pagingType: 1,
+        // Phân trang của các sản phẩm hiển thị ở trang home
+        url: "/products",
+        value: {
+          page: this.pageP
+        }
+      }, {
+        pagingType: 2,
+        // Phân trang của các sản phẩm của danh mục hoặc loại sản phẩm
+        url: "/prod-catalog",
+        value: {
+          f_lv: this.$store.state.prodCatalog.lv_pt_c,
+          pt_c_ID: this.$store.state.prodCatalog.pt_c_ID,
+          page: this.pageP
+        }
+      }, {
+        pagingType: 3,
+        // Phân trang của các sản phẩm đã đc lọc
+        url: "/prod-filters",
+        value: _objectSpread(_objectSpread({}, this.$store.state.filtersProdType), {}, {
+          page: this.pageP
+        })
+      }, {
+        pagingType: 4,
+        // Phân trang của các sản phẩm thỏa mãn giá trị tìm kiếm
+        url: "/search-product",
+        value: {
+          show_all: 1,
+          info_searched: this.$store.state.searchProduct.infoSearched,
+          page: this.pageP
+        }
+      }];
+      var params = arr_urls_params[this.$store.state.pagination.paging_type - 1];
+      console.log("Tham số thỏa mãn: ");
+      console.log(params);
+      return params;
+    }
+  },
+  watch: {
+    "$store.state.pagination.default_page_numbs": function $storeStatePaginationDefault_page_numbs() {
+      this.initArrPagesPagination();
+    },
+    "$store.state.prodCatalog.pt_c_ID": function $storeStateProdCatalogPt_c_ID() {
+      this.initArrPagesPagination();
+    },
+    "$store.state.pagination.total_pages": function $storeStatePaginationTotal_pages() {
+      this.initArrPagesPagination();
     }
   }
 });
@@ -2339,13 +2564,127 @@ __webpack_require__.r(__webpack_exports__);
 
     };
   },
-  mounted: function mounted() {
-    console.log(this.list_products);
-    console.log('Component Products Mounted.');
+  methods: {
+    getUrl: function getUrl(prodID) {
+      return "/prod-detail/" + prodID;
+    },
+    moneyFormatVN: function moneyFormatVN(strMoney) {
+      var arrStr = parseInt(strMoney).toString().split("");
+      var len = arrStr.length - 1;
+
+      for (var i = len - 1; i >= 0; i--) {
+        arrStr[i] = (len - i) % 3 == 0 ? arrStr[i] + "." : arrStr[i];
+      }
+
+      return arrStr.join("");
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchIndicatorComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SearchIndicatorComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["products_searched"],
+  data: function data() {
+    return {
+      noProducts: false
+    };
   },
-  updated: function updated() {
-    console.log("Danh sách cũ đã đc update!");
-    console.log(this.list_products);
+  mounted: function mounted() {
+    console.log("");
+    console.log("ProdSearchIndicatorComponent mounted.");
+    console.log("");
+  },
+  watch: {
+    products_searched: function products_searched() {
+      this.noProducts = this.products_searched == null || this.products_searched.length == 0 ? true : false;
+    }
   },
   methods: {
     moneyFormatVN: function moneyFormatVN(strMoney) {
@@ -2357,6 +2696,12 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return arrStr.join("");
+    },
+    seeAllSearchedProds: function seeAllSearchedProds() {
+      this.$emit("see_all_searched_prods");
+    },
+    getUrl: function getUrl(prodID) {
+      return "/prod-detail/" + prodID;
     }
   }
 });
@@ -37976,15 +38321,18 @@ var render = function() {
                           staticClass: "css-aa3ad4",
                           on: {
                             click: function($event) {
-                              return _vm.delSelectedFilterValue(
-                                filterIndex,
-                                indexValue
+                              return _vm.getProductsFilter(
+                                filter.filterID,
+                                value.filterValue,
+                                value.elemHTML
                               )
                             }
                           }
                         },
                         [
-                          _c("span", [_vm._v(" " + _vm._s(value) + " ")]),
+                          _c("span", [
+                            _vm._v(" " + _vm._s(value.filterValue) + " ")
+                          ]),
                           _vm._v(" "),
                           _c("span", { staticClass: "css-2ba442" }, [
                             _c(
@@ -38055,11 +38403,7 @@ var render = function() {
                           attrs: { color: "#ef2741" },
                           on: {
                             click: function($event) {
-                              return _vm.delSelectedFilterValue(
-                                null,
-                                null,
-                                true
-                              )
+                              return _vm.selectedFilters.splice(0)
                             }
                           }
                         },
@@ -38090,7 +38434,7 @@ var render = function() {
                 [
                   _c("div", { staticClass: "css-81e6e6" }, [
                     _c("div", { staticClass: "css-987424" }, [
-                      _vm._v(" " + _vm._s(filter.filterName.Name) + " ")
+                      _vm._v(_vm._s(filter.filterName.Name))
                     ])
                   ]),
                   _vm._v(" "),
@@ -38115,7 +38459,8 @@ var render = function() {
                               click: function($event) {
                                 return _vm.getProductsFilter(
                                   filter.filterName.ID,
-                                  f_Value.Value
+                                  f_Value.Value,
+                                  $event.currentTarget
                                 )
                               }
                             }
@@ -38217,7 +38562,10 @@ var render = function() {
                             staticClass: "css-ebe02b",
                             on: {
                               click: function($event) {
-                                _vm.updateProdListByFilter(s_t_pt.fatherLv.ID)
+                                _vm.updateProdListByFilter(
+                                  2,
+                                  s_t_pt.fatherLv.ID
+                                )
                               }
                             }
                           },
@@ -38282,7 +38630,7 @@ var render = function() {
                           {
                             on: {
                               click: function($event) {
-                                _vm.updateProdListByFilter(pt_pc.ID)
+                                _vm.updateProdListByFilter(3, pt_pc.ID)
                               }
                             }
                           },
@@ -38463,7 +38811,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v(" " + _vm._s(page) + " ")]
+                [_vm._v("\n          " + _vm._s(page) + "\n        ")]
               )
             ])
           }),
@@ -38549,7 +38897,7 @@ var render = function() {
         {
           key: prodD.product.ID,
           staticClass: "css-2c7762",
-          attrs: { href: "" }
+          attrs: { href: _vm.getUrl(prodD.product.ID) }
         },
         [
           _c(
@@ -38607,7 +38955,13 @@ var render = function() {
                           _c("span", { staticClass: "price css-690a6b" }, [
                             _vm._v(
                               "\n                    " +
-                                _vm._s(_vm.moneyFormatVN(prodD.product.Price)) +
+                                _vm._s(
+                                  _vm.moneyFormatVN(
+                                    prodD.product.PromotionPrice == null
+                                      ? prodD.product.Price
+                                      : prodD.product.PromotionPrice
+                                  )
+                                ) +
                                 "\n                    "
                             ),
                             _c("span", { staticClass: "css-9f611a" }, [
@@ -38624,9 +38978,7 @@ var render = function() {
                                     _vm._v(
                                       "\n                      " +
                                         _vm._s(
-                                          _vm.moneyFormatVN(
-                                            prodD.product.PromotionPrice
-                                          )
+                                          _vm.moneyFormatVN(prodD.product.Price)
                                         ) +
                                         "\n                      "
                                     ),
@@ -38728,6 +39080,205 @@ var staticRenderFns = [
         staticStyle: { width: "45px", height: "32px" },
         attrs: { src: "/Data/images/Product/Icon/free-delivery.svg", alt: "" }
       })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchIndicatorComponent.vue?vue&type=template&id=ce87683e&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SearchIndicatorComponent.vue?vue&type=template&id=ce87683e& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "css-bc9d08" }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.noProducts,
+            expression: "!noProducts"
+          }
+        ],
+        staticClass: "css-b7fa2c"
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "css-f566aa" },
+          _vm._l(_vm.products_searched, function(prodS, index) {
+            return _c(
+              "a",
+              {
+                key: index,
+                staticClass: "css-93b7d3",
+                attrs: { href: _vm.getUrl(prodS.product.ID) }
+              },
+              [
+                _c("div", { staticClass: "css-f8a39b" }, [
+                  _c("img", { attrs: { src: prodS.product.Image, alt: "" } })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-cef33e" }, [
+                  _c("div", { staticClass: "css-830b37" }, [
+                    _c("div", { staticClass: "css-82a866" }, [
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(prodS.product.Name) +
+                          "\n            "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "css-3c7ce6" }, [
+                    _c("span", { staticClass: "price css-690a6b" }, [
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(
+                            _vm.moneyFormatVN(prodS.product.PromotionPrice)
+                          ) +
+                          "\n              "
+                      ),
+                      _c("span", { staticClass: "css-9f611a" }, [_vm._v("đ")])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "css-48812d" }, [
+                      _c(
+                        "span",
+                        { staticClass: "promotion_price css-c5818a" },
+                        [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(_vm.moneyFormatVN(prodS.product.Price)) +
+                              "\n                "
+                          ),
+                          _c("span", { staticClass: "css-9f611a" }, [
+                            _vm._v("đ")
+                          ])
+                        ]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(0, true)
+              ]
+            )
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "css-2b99b8" }, [
+          _c(
+            "button",
+            {
+              staticClass: "css-6f07dc",
+              on: {
+                click: function($event) {
+                  return _vm.seeAllSearchedProds()
+                }
+              }
+            },
+            [_vm._v("\n        Xem tất cả\n      ")]
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.noProducts,
+            expression: "noProducts"
+          }
+        ],
+        staticClass: "css-26944c"
+      },
+      [_vm._m(1)]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "css-b89921" }, [
+      _c("div", { staticClass: "css-e37899" }, [
+        _c("div", { staticClass: "css-5f796a" }, [_vm._v("QUÀ TẶNG")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "css-a59f33" }, [
+          _c("div", { staticClass: "css-83b632 css-21b9ec" }, [
+            _c("img", {
+              staticClass: "css-904f61",
+              attrs: {
+                "data-src": "",
+                src: "/Data/images/Product/Balo/mainImg-balo1.png",
+                alt: "Chuột máy tính Logitech B175 (Đen)"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "css-83b632 css-21b9ec" }, [
+            _c("img", {
+              staticClass: "css-904f61",
+              attrs: {
+                "data-src": "",
+                src: "/Data/images/Product/Balo/Rivacase/mainImg-rivacase3.png",
+                alt: "Túi đựng laptop 14''"
+              }
+            })
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "css-418419 active" }, [
+        _c(
+          "div",
+          {
+            staticClass: "css-c2ed66",
+            staticStyle: { width: "100px", height: "100px!important" }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "/Data/images/Product/no-products-found.png",
+                alt: ""
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "css-9cba25" }, [
+          _vm._v("Không tìm thấy sản phẩm")
+        ])
+      ])
     ])
   }
 ]
@@ -55288,6 +55839,7 @@ Vue.directive('click-outside', {
 Vue.component('menu-panel-component', __webpack_require__(/*! ./components/MenuPanelComponent.vue */ "./resources/js/components/MenuPanelComponent.vue")["default"]);
 Vue.component('products-component', __webpack_require__(/*! ./components/ProductsComponent.vue */ "./resources/js/components/ProductsComponent.vue")["default"]);
 Vue.component('pagination-component', __webpack_require__(/*! ./components/PaginationComponent.vue */ "./resources/js/components/PaginationComponent.vue")["default"]);
+Vue.component('search-indicator-component', __webpack_require__(/*! ./components/SearchIndicatorComponent.vue */ "./resources/js/components/SearchIndicatorComponent.vue")["default"]);
 var FilterComponent = Vue.component('filter-component', __webpack_require__(/*! ./components/FilterComponent.vue */ "./resources/js/components/FilterComponent.vue")["default"]); // const vtest = Vue.component('test-component', require('./components/TestComponent.vue').default);
 
 /**
@@ -55330,8 +55882,14 @@ var app = new Vue({
   },
   data: function data() {
     return {
+      // Tìm kiếm
+      prodSearchQuery: '',
+      prorductsSearched: null,
+      // Kết thúc tìm kiếm
       listProducts: this.$store.state.products_homepage,
+      productExists: true,
       // Các biến cho phân trang
+      urlPaginHomepage: '/products',
       pageP: 1,
       defaultPageNumbs: 9,
       prodNumbDisplayed: 0,
@@ -55343,6 +55901,9 @@ var app = new Vue({
     };
   },
   watch: {
+    prodSearchQuery: function prodSearchQuery() {
+      this.searchProduct(0);
+    },
     pageP: function pageP(newPageP, oldPageP) {
       var vm = this;
       axios.get('/products', {
@@ -55353,6 +55914,7 @@ var app = new Vue({
       }).then(function (response) {
         //   vm.listProducts = response.data.listProducts;
         vm.$store.commit("changeProdHomepage", response.data.listProducts);
+        console.log("Lấy sản phẩm theo phân trang làm việc ở root!");
       })["catch"](function (error) {
         console.log("Lỗi phân trang!");
       });
@@ -55360,6 +55922,10 @@ var app = new Vue({
     "$store.state.products_homepage": function $storeStateProducts_homepage(nv) {
       console.log("State.Products_Homepage đã đc thay đổi!");
       this.listProducts = this.$store.state.products_homepage;
+      this.productExists = this.listProducts.length > 0 ? true : false;
+    },
+    prorductsSearched: function prorductsSearched() {
+      console.log("Danh sách sản phẩm đc tìm kiếm đã đc cập nhật!");
     }
   },
   methods: {
@@ -55390,17 +55956,128 @@ var app = new Vue({
     },
     updateDefaultPageNumbs: function updateDefaultPageNumbs(jsMediaQ, pageNumb) {
       if (jsMediaQ.matches) {
-        this.defaultPageNumbs = pageNumb;
+        // this.defaultPageNumbs = pageNumb;
+        this.$store.commit("changeDefaultPageNumb_P", pageNumb);
       }
     },
     pageChangePagination: function pageChangePagination(page) {
       this.pageP = page;
     },
-    updateProdListByFilter: function updateProdListByFilter(pt_c_id) {
+    updateProdListByFilter: function updateProdListByFilter(pt_c) {
+      console.log("");
+      console.log("Đã đc chọn!");
+      console.log("");
       this.turnOffProdCDropDown();
+      var f_lv = 1,
+          pt_c_ID = null;
+
+      if (isNaN(pt_c)) {
+        f_lv = pt_c.lv_c_pt;
+        pt_c_ID = pt_c.pt_c_id;
+      } else {
+        pt_c_ID = pt_c;
+      }
+
+      var vm = this;
+      axios.get('/prod-catalog', {
+        params: {
+          f_lv: f_lv,
+          pt_c_ID: pt_c_ID,
+          page: 1
+        }
+      }).then(function (response) {
+        vm.$store.commit("changeProdHomepage", response.data.listProducts);
+        vm.$store.commit("changeTotalNumbPage_P", response.data.total_pages);
+
+        if (vm.$store.state.pagination.paging_type != 2) {
+          vm.$store.commit("changePagingType_P", 2); // 2: Phân trang cho các sản phẩm theo danh mục hoặc loại sản phẩm
+        }
+
+        vm.$store.commit("changeProdCatalog", {
+          lv_pt_c: f_lv,
+          pt_c_ID: pt_c_ID
+        });
+        console.log("");
+        console.log("Các sản phẩm thỏa mãn loại hoặc danh mục sản phẩm!");
+        console.log(response.data.listProducts);
+        console.log("");
+      })["catch"](function (error) {
+        console.log("Lỗi chíp!");
+      });
     },
     hideFilters: function hideFilters(bool_fd) {
+      // Ẩn bộ lọc
       this.filterDisplay = bool_fd;
+    },
+    changeUrlParamsPaginHomepage: function changeUrlParamsPaginHomepage() {
+      // Thay đổi url và param cho phân trang ở route home
+      this.$store.commit("changeUrl_P", this.urlPaginHomepage);
+    },
+    // Tìm kiếm sản phẩm
+    searchInputFocus: function searchInputFocus() {
+      if (this.prodSearchQuery != "") {
+        this.searchProduct(0);
+      }
+    },
+    hideIndicator: function hideIndicator() {
+      this.prorductsSearched = null;
+    },
+    searchProduct: _.debounce(function (show_all) {
+      console.log("");
+      console.log("Giá trị đc tìm kiếm");
+      console.log(show_all);
+      console.log("");
+      var vm = this;
+      axios.get('/search-product', {
+        params: {
+          show_all: show_all,
+          info_searched: vm.prodSearchQuery,
+          page: 1
+        }
+      }).then(function (response) {
+        vm.prorductsSearched = show_all == 1 ? null : response.data.listProducts;
+
+        if (show_all == 1) {
+          vm.filterDisplay = false; // Ẩn đi bộ lọc
+
+          vm.$store.commit("changeProdHomepage", response.data.listProducts);
+          vm.$store.commit("changeTotalNumbPage_P", response.data.total_pages);
+          vm.$store.commit("changeInfoSearched", vm.prodSearchQuery);
+
+          if (vm.$store.state.pagination.paging_type != 4) {
+            vm.$store.commit("changePagingType_P", 4); // 4: Phân trang cho các sản phẩm thỏa mãn giá trị tìm kiếm
+          }
+        }
+      })["catch"](function (error) {
+        console.log("Lỗi lấy sản phẩm khi tìm kiếm!");
+      });
+    }, 200),
+    // Sắp xếp sản phẩm
+    sortBestPromotion: function sortBestPromotion() {
+      var vm = this;
+      axios.get('/search-product', {
+        params: {
+          show_all: show_all,
+          info_searched: vm.prodSearchQuery,
+          page: 1
+        }
+      }).then(function (response) {
+        vm.prorductsSearched = show_all == 1 ? null : response.data.listProducts;
+
+        if (show_all == 1) {
+          vm.filterDisplay = false; // Ẩn đi bộ lọc
+
+          vm.$store.commit("changeProdHomepage", response.data.listProducts);
+          vm.$store.commit("changeTotalNumbPage_P", response.data.total_pages);
+          vm.$store.commit("changeInfoSearched", vm.prodSearchQuery);
+
+          if (vm.$store.state.pagination.paging_type != 4) {
+            vm.$store.commit("changePagingType_P", 4); // 4: Phân trang cho các sản phẩm thỏa mãn giá trị tìm kiếm
+          }
+        }
+      })["catch"](function (error) {
+        console.log("Lỗi lấy sản phẩm khi tìm kiếm!");
+      });
     }
   }
 });
@@ -55741,6 +56418,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/SearchIndicatorComponent.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/SearchIndicatorComponent.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SearchIndicatorComponent_vue_vue_type_template_id_ce87683e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchIndicatorComponent.vue?vue&type=template&id=ce87683e& */ "./resources/js/components/SearchIndicatorComponent.vue?vue&type=template&id=ce87683e&");
+/* harmony import */ var _SearchIndicatorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchIndicatorComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SearchIndicatorComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SearchIndicatorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SearchIndicatorComponent_vue_vue_type_template_id_ce87683e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SearchIndicatorComponent_vue_vue_type_template_id_ce87683e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SearchIndicatorComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SearchIndicatorComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/SearchIndicatorComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchIndicatorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SearchIndicatorComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchIndicatorComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchIndicatorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SearchIndicatorComponent.vue?vue&type=template&id=ce87683e&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/SearchIndicatorComponent.vue?vue&type=template&id=ce87683e& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchIndicatorComponent_vue_vue_type_template_id_ce87683e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SearchIndicatorComponent.vue?vue&type=template&id=ce87683e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchIndicatorComponent.vue?vue&type=template&id=ce87683e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchIndicatorComponent_vue_vue_type_template_id_ce87683e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchIndicatorComponent_vue_vue_type_template_id_ce87683e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/store/index.js":
 /*!*************************************!*\
   !*** ./resources/js/store/index.js ***!
@@ -55760,7 +56506,27 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
     products_homepage: null,
-    user: "cuong"
+    prodCatalog: {
+      // Đc dùng trong component khác khi người dùng chọn danh mục hoặc loại sản phẩm
+      lv_pt_c: null,
+      pt_c_ID: null // Mã loại hoặc mã danh mục
+
+    },
+    pagination: {
+      // Chứa các key đc dùng trong pagination (PaginationComponent)
+      paging_type: 1,
+      // Mặc định phân trang dc hiển thị cho các sản phẩm ở trang home
+      total_pages: 0,
+      default_page_numbs: 9
+    },
+    filtersProdType: {
+      // Được dùng trong bộ lọc (FilterComponent)
+      prod_type: null,
+      filters: null
+    },
+    searchProduct: {
+      infoSearched: ""
+    }
   },
   getters: {},
   mutations: {
@@ -55768,6 +56534,38 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
       state.products_homepage = newProducts;
       console.log("Sản phẩm trên store đã đc cập nhật!");
       console.log(newProducts);
+    },
+    // Cập nhật cho phần phân trang
+    changePagingType_P: function changePagingType_P(state, paging_type) {
+      // P là pagination
+      state.pagination.paging_type = paging_type;
+    },
+    changeTotalNumbPage_P: function changeTotalNumbPage_P(state, total_pages) {
+      state.pagination.total_pages = total_pages;
+    },
+    changeDefaultPageNumb_P: function changeDefaultPageNumb_P(state, defaultPageNumb) {
+      state.pagination.default_page_numbs = defaultPageNumb;
+    },
+    changeUrl_P: function changeUrl_P(state, url) {
+      state.pagination.url = url;
+    },
+    changeParams_P: function changeParams_P(state, params) {
+      state.pagination.params = params;
+    },
+    // Cập nhật loại bộ lọc, các giá trị lọc mới
+    changeFiltersProdType_F: function changeFiltersProdType_F(state, p_filtersProdType) {
+      // F: filters
+      state.filtersProdType.prod_type = p_filtersProdType.prod_type;
+      state.filtersProdType.filters = p_filtersProdType.filters;
+    },
+    // Cập nhật cấp độ, loại của danh mục hoặc loại sản phẩm
+    changeProdCatalog: function changeProdCatalog(state, pt_c) {
+      state.prodCatalog.lv_pt_c = pt_c.lv_pt_c;
+      state.prodCatalog.pt_c_ID = pt_c.pt_c_ID;
+    },
+    // Cập nhật tìm kiếm
+    changeInfoSearched: function changeInfoSearched(state, infoSearched) {
+      state.searchProduct.infoSearched = infoSearched;
     }
   },
   actions: {}
