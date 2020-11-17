@@ -1,6 +1,6 @@
 <template>
   <div class="hp__pl__container css-a46f11">
-    <a v-for="prodD of list_products" v-bind:key="prodD.product.ID" href="" class="css-2c7762">
+    <a v-for="prodD of list_products" v-bind:key="prodD.product.ID" v-bind:href="getUrl(prodD.product.ID)" class="css-2c7762">
       <div class="hp__pl__product product-card css-2e8efa d-flex flex-column align-content-center justify-content-center">
         <div class="product-card__content" style="height: 100%;">
           <div class="pl__prod-image css-506c78">
@@ -19,15 +19,15 @@
               <div class="css-46c3ed">
                 <div class="css-3c7ce6">
                   <span class="price css-690a6b">
-                    {{ moneyFormatVN(prodD.product.Price)}}
+                    {{ moneyFormatVN(prodD.product.PromotionPrice == null ? prodD.product.Price: prodD.product.PromotionPrice) }}
                     <span class="css-9f611a">đ</span>
                   </span>
                   <div v-if="prodD.product.PromotionPrice != null" class="css-48812d">
                     <span class="promotion_price css-c5818a">
-                      {{ moneyFormatVN(prodD.product.PromotionPrice) }}
+                      {{ moneyFormatVN(prodD.product.Price)}}
                       <span class="css-9f611a">đ</span>
                     </span>
-                    <span class="promotion_percen css-027579"> {{ Math.round((1 - prodD.product.PromotionPrice/prodD.product.Price)*100) + "%" }} </span>
+                    <span class="promotion_percen css-027579"> {{Math.round((1 - prodD.product.PromotionPrice/prodD.product.Price)*100) + "%" }} </span>
                   </div>
                 </div>
               </div>
@@ -61,15 +61,10 @@
         freeShip: 500000, // Sản phẩm nào có giá bán > 500.000đ thì đc freesShip
       }
     },
-    mounted: function(){
-      console.log(this.list_products)
-      console.log('Component Products Mounted.')
-    },
-    updated: function() {
-      console.log("Danh sách cũ đã đc update!");
-      console.log(this.list_products)
-    },
     methods: {
+      getUrl: function(prodID) {
+        return "/prod-detail/" + prodID;
+      },
       moneyFormatVN: function(strMoney) {
         let arrStr = parseInt(strMoney).toString().split("");
           let len = arrStr.length - 1;
