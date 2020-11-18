@@ -21,7 +21,8 @@
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/client/home.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/swiper/swiper-productDetail.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app" class="wrapper">
@@ -317,5 +318,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="/js/swiper/swiper-bundle.min.js"></script>
+    <script defer src="/js/swiper/swiper-productDetail.js"></script>
 </body>
 </html>
