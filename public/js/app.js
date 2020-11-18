@@ -2491,6 +2491,754 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductDetailComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProductDetailComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["product_detail"],
+  data: function data() {
+    return {
+      mainImg_relatedImg: null,
+      specifications: [],
+      moreDetails: false,
+      moreSpecifications: false,
+      showNumbProdsRemain: 15,
+      // Những sản phẩm nào có số lượng tồn < 15 thì hiển thị thông báo
+      freeShip: 500000 // Sản phẩm nào có giá bán > 500.000đ thì đc freesShip
+
+    };
+  },
+  beforeMount: function beforeMount() {
+    this.mainImg_relatedImg = this.getMainImgRelatedImg(this.product_detail.product.Image, this.product_detail.product.MoreImages);
+    this.specificationsDF(this.product_detail.PCS_PS);
+    console.log("");
+    console.log("Bảng thông số sau khi chuẩn hóa");
+    console.log(this.specifications);
+    console.log("");
+  },
+  mounted: function mounted() {
+    console.log("");
+    console.log("ProductDetailComponent mounted.");
+    console.log("");
+
+    if ($('.css-4c1e9d p').height() > 200) {
+      $('.content-expansion').css('display', 'block');
+    } else {
+      $('.content-expansion').css('display', 'none');
+    }
+  },
+  watch: {},
+  methods: {
+    moneyFormatVN: function moneyFormatVN(strMoney) {
+      var arrStr = parseInt(strMoney).toString().split("");
+      var len = arrStr.length - 1;
+
+      for (var i = len - 1; i >= 0; i--) {
+        arrStr[i] = (len - i) % 3 == 0 ? arrStr[i] + "." : arrStr[i];
+      }
+
+      return arrStr.join("");
+    },
+    getMainImgRelatedImg: function getMainImgRelatedImg(mainImg, relatedImg) {
+      var pathImg = mainImg.substr(0, mainImg.length - mainImg.split("/").pop().length);
+      return [mainImg].concat(_toConsumableArray(relatedImg.split(",").map(function (img) {
+        return pathImg + img;
+      })));
+    },
+    specificationsDF: function specificationsDF(p_specifications) {
+      // specification display format
+      var sTypes = ["Thông tin tổng quan", "Thông tin chung", "Cấu hình chi tiết", "Thông tin khác"];
+      var typeID = 0;
+      p_specifications.forEach(function (value) {
+        if (value.TypeSpecifications != typeID) {
+          this.specifications.push({
+            name: sTypes[value.TypeSpecifications],
+            value: ""
+          });
+          typeID = value.TypeSpecifications;
+        }
+
+        if (value.ParentID == 0 && value.Value != "" || value.ParentID == 0 && value.Value != null) {
+          this.specifications.push({
+            name: value.Name,
+            value: value.Value
+          });
+        }
+      }.bind(this));
+      return sTypes;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductsComponent.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProductsComponent.vue?vue&type=script&lang=js& ***!
@@ -38873,6 +39621,898 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductDetailComponent.vue?vue&type=template&id=62e50068&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProductDetailComponent.vue?vue&type=template&id=62e50068& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "css-p91eq5" }, [
+    _c("div", { staticClass: "css-6l7rf5" }, [
+      _c("div", { staticClass: "css-1hwtax5" }, [
+        _c("div", { staticClass: "css-i22ydz" }, [
+          _c("div", { staticClass: "css-0" }, [
+            _c("div", { staticClass: "css-4cffwv" }, [
+              _c("div", { staticClass: "css-1i1dodm" }, [
+                _c("div", { staticClass: "css-709yn1" }, [
+                  _c(
+                    "div",
+                    { attrs: { id: "modal-body__prod-details-area" } },
+                    [
+                      _c("div", { staticClass: "pda__detail-info-prod" }, [
+                        _c("div", { staticClass: "dip__container-pp-mis" }, [
+                          _vm._m(0),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "pad__dip__part-pictures" },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "swiper-container gallery-top" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "swiper-wrapper" },
+                                    _vm._l(_vm.mainImg_relatedImg, function(
+                                      imgP,
+                                      index
+                                    ) {
+                                      return _c(
+                                        "div",
+                                        {
+                                          key: index,
+                                          staticClass: "swiper-slide"
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "swiper-zoom-container"
+                                            },
+                                            [
+                                              _c("img", {
+                                                attrs: { src: imgP, alt: "" }
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    }),
+                                    0
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass:
+                                      "swiper-button-next swiper-button-white"
+                                  }),
+                                  _vm._v(" "),
+                                  _c("div", {
+                                    staticClass:
+                                      "swiper-button-prev swiper-button-white"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "swiper-container gallery-thumbs"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "swiper-wrapper" },
+                                    _vm._l(_vm.mainImg_relatedImg, function(
+                                      imgP,
+                                      index
+                                    ) {
+                                      return _c(
+                                        "div",
+                                        {
+                                          key: index,
+                                          staticClass: "swiper-slide"
+                                        },
+                                        [
+                                          _c("img", {
+                                            attrs: { src: imgP, alt: "" }
+                                          })
+                                        ]
+                                      )
+                                    }),
+                                    0
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-3tu0eq" }),
+                _vm._v(" "),
+                _c("div", [
+                  _c("div", { staticClass: "css-r9cu07" }, [
+                    _c("div", { staticClass: "card-body css-0" }, [
+                      _c("div", {
+                        staticClass: "css-111s35w",
+                        domProps: {
+                          innerHTML: _vm._s(
+                            _vm.product_detail.product.Description
+                          )
+                        }
+                      })
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "css-6b3ezu" }, [
+                _c("div", { staticClass: "css-1jpdzyd" }, [
+                  _vm._v(
+                    "\n                  " +
+                      _vm._s(_vm.product_detail.product.Name) +
+                      "\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-1b2x0kn" }),
+                _vm._v(" "),
+                _vm.product_detail.product.Quantity < _vm.showNumbProdsRemain
+                  ? _c("div", { staticClass: "css-1wn7dgo" }, [
+                      _vm._v(
+                        "\n                  Chỉ còn " +
+                          _vm._s(_vm.product_detail.product.Quantity) +
+                          "\n                "
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-11n8erc" }, [
+                  _c("div", { staticClass: "css-1etdbj7" }, [
+                    _c("span", { staticClass: "css-3725in" }, [
+                      _vm._v(
+                        "\n                      " +
+                          _vm._s(
+                            _vm.moneyFormatVN(
+                              _vm.product_detail.product.PromotionPrice != null
+                                ? _vm.product_detail.product.PromotionPrice
+                                : _vm.product_detail.product.Price
+                            )
+                          ) +
+                          "\n                      "
+                      ),
+                      _c("span", { staticClass: "css-1ul6wk9" }, [_vm._v("đ")])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  _vm._l(
+                    _vm.product_detail.pmtDetail_PmtPackage.pmtDetail,
+                    function(promt, index) {
+                      return _c(
+                        "div",
+                        { key: index, staticClass: "css-vuhw84" },
+                        [
+                          promt.Image != null
+                            ? _c("div", [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "css-195zgzt",
+                                    attrs: { height: "32", width: "32" }
+                                  },
+                                  [
+                                    _c("img", {
+                                      staticClass: "lazyload css-jdz5ak",
+                                      attrs: {
+                                        alt: "",
+                                        "data-src": "",
+                                        src: promt.Image,
+                                        loading: "lazy",
+                                        decoding: "async"
+                                      }
+                                    })
+                                  ]
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          promt.Image != null
+                            ? _c("span", { staticClass: "css-barcwm" }, [
+                                _vm._v(" " + _vm._s(promt.Name))
+                              ])
+                            : _vm._e()
+                        ]
+                      )
+                    }
+                  ),
+                  0
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-3tu0eq" }),
+                _vm._v(" "),
+                _vm.product_detail.product.PromotionPrice != null
+                  ? _c("div", [
+                      _c("div", { staticClass: "css-1sfy14o" }, [
+                        _vm._v("Giá khuyến mãi:")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "css-kr4u7a" }, [
+                        _c("div", { staticClass: "css-10y5j5j" }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "css-1sulisw" }, [
+                          _c("div", { staticClass: "css-syv2kv" }, [
+                            _c("div", { staticClass: "css-64noit" }, [
+                              _c("strong", { staticClass: "css-sr31nm" }, [
+                                _vm._v("Giá:")
+                              ]),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "css-1xghdzx" }, [
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(
+                                      _vm.moneyFormatVN(
+                                        _vm.product_detail.product
+                                          .PromotionPrice
+                                      )
+                                    ) +
+                                    "\n                          "
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "css-iq3qhu" }, [
+                              _vm._v(
+                                "\n                          Đã giảm thêm\n                          "
+                              ),
+                              _c("span", { staticClass: "css-1mye30f" }, [
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(
+                                      _vm.moneyFormatVN(
+                                        _vm.product_detail.product.Price -
+                                          _vm.product_detail.product
+                                            .PromotionPrice
+                                      )
+                                    ) +
+                                    "\n                          "
+                                )
+                              ])
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "css-18wywdr" }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "css-th3zma" }, [_vm._v("✓")])
+                      ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-3tu0eq" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-1rggx5t" }, [
+                  _c("div", { staticClass: "css-mz7xyg" }, [
+                    _vm._v("Khuyến mãi liên quan")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "ul",
+                    _vm._l(
+                      _vm.product_detail.pmtDetail_PmtPackage.pmtDetail,
+                      function(promt, index) {
+                        return _c("li", { key: index }, [
+                          promt.Image == null
+                            ? _c("p", [
+                                _vm._v(
+                                  "\n                        " +
+                                    _vm._s(promt.Name) +
+                                    "\n                      "
+                                )
+                              ])
+                            : _vm._e()
+                        ])
+                      }
+                    ),
+                    0
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "css-l5vln9" }, [
+        _c("div", { staticClass: "css-cc7zbm" }, [
+          _c("div", { staticClass: "card-body css-0" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "css-3tu0eq" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "css-tq900l" }, [
+              _c("div", { staticClass: "css-nlnywq" }, [
+                _vm._v("Chính sách bán hàng")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "css-762ld9" }, [
+                _c("span", {
+                  staticClass: "css-1sk9y4t",
+                  attrs: { size: "24" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-ssxjzj" }, [
+                  _c("span", [
+                    _c(
+                      "svg",
+                      {
+                        staticClass:
+                          "icon icon-tabler icon-tabler-circle-check",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "25",
+                          height: "25",
+                          viewBox: "0 0 24 24",
+                          "stroke-width": "1.5",
+                          stroke: "#3F51B5",
+                          fill: "none",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            stroke: "none",
+                            d: "M0 0h24v24H0z",
+                            fill: "none"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("circle", { attrs: { cx: "12", cy: "12", r: "9" } }),
+                        _vm._v(" "),
+                        _c("path", { attrs: { d: "M9 12l2 2l4 -4" } })
+                      ]
+                    )
+                  ]),
+                  _vm._v(
+                    "\n                  Cam kết hàng chính hãng 100%\n                "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "css-762ld9" }, [
+                _c("span", {
+                  staticClass: "css-1maatv7",
+                  attrs: { size: "24" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-ssxjzj" }, [
+                  _c("span", [
+                    _c(
+                      "svg",
+                      {
+                        staticClass:
+                          "icon icon-tabler icon-tabler-truck-delivery",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "25",
+                          height: "25",
+                          viewBox: "0 0 24 24",
+                          "stroke-width": "1.5",
+                          stroke: "#3F51B5",
+                          fill: "none",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            stroke: "none",
+                            d: "M0 0h24v24H0z",
+                            fill: "none"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("circle", { attrs: { cx: "7", cy: "17", r: "2" } }),
+                        _vm._v(" "),
+                        _c("circle", { attrs: { cx: "17", cy: "17", r: "2" } }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("line", {
+                          attrs: { x1: "3", y1: "9", x2: "7", y2: "9" }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(
+                    "\n                  Miễn phí giao hàng từ 500K\n                "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "css-762ld9" }, [
+                _c("span", {
+                  staticClass: "css-zcwrt7",
+                  attrs: { size: "24" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-ssxjzj" }, [
+                  _c("span", [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "icon icon-tabler icon-tabler-replace",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "25",
+                          height: "25",
+                          viewBox: "0 0 24 24",
+                          "stroke-width": "1.5",
+                          stroke: "#3F51B5",
+                          fill: "none",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            stroke: "none",
+                            d: "M0 0h24v24H0z",
+                            fill: "none"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: {
+                            x: "3",
+                            y: "3",
+                            width: "6",
+                            height: "6",
+                            rx: "1"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: {
+                            x: "15",
+                            y: "15",
+                            width: "6",
+                            height: "6",
+                            rx: "1"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            d: "M21 11v-3a2 2 0 0 0 -2 -2h-6l3 3m0 -6l-3 3"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: { d: "M3 13v3a2 2 0 0 0 2 2h6l-3 -3m0 6l3 -3" }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(
+                    "\n                  Đổi trả miễn phí trong 10 ngày\n                "
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "css-1b0ylgr" }, [
+              _c("div", { staticClass: "css-nlnywq" }, [
+                _vm._v("Dịch vụ khác")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "css-762ld9" }, [
+                _c("span", {
+                  staticClass: "css-11g1ek",
+                  attrs: { size: "24" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-ssxjzj" }, [
+                  _c("span", [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "icon icon-tabler icon-tabler-settings",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "25",
+                          height: "25",
+                          viewBox: "0 0 24 24",
+                          "stroke-width": "1.5",
+                          stroke: "#3F51B5",
+                          fill: "none",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            stroke: "none",
+                            d: "M0 0h24v24H0z",
+                            fill: "none"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("circle", { attrs: { cx: "12", cy: "12", r: "3" } })
+                      ]
+                    )
+                  ]),
+                  _vm._v(
+                    "\n                  Sửa chữa đồng giá 150.000đ.\n                "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "css-762ld9" }, [
+                _c("span", {
+                  staticClass: "css-1f6le2r",
+                  attrs: { size: "24" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-ssxjzj" }, [
+                  _c("span", [
+                    _c(
+                      "svg",
+                      {
+                        staticClass:
+                          "icon icon-tabler icon-tabler-device-laptop",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "25",
+                          height: "25",
+                          viewBox: "0 0 24 24",
+                          "stroke-width": "1.5",
+                          stroke: "#3F51B5",
+                          fill: "none",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            stroke: "none",
+                            d: "M0 0h24v24H0z",
+                            fill: "none"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("line", {
+                          attrs: { x1: "3", y1: "19", x2: "21", y2: "19" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: {
+                            x: "5",
+                            y: "6",
+                            width: "14",
+                            height: "10",
+                            rx: "1"
+                          }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(
+                    "\n                  Vệ sinh máy tính, laptop.\n                "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "css-762ld9" }, [
+                _c("span", {
+                  staticClass: "css-1usmsyf",
+                  attrs: { size: "24" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "css-ssxjzj" }, [
+                  _c("span", [
+                    _c(
+                      "svg",
+                      {
+                        staticClass:
+                          "icon icon-tabler icon-tabler-shield-check",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "25",
+                          height: "25",
+                          viewBox: "0 0 24 24",
+                          "stroke-width": "1.5",
+                          stroke: "#3F51B5",
+                          fill: "none",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            stroke: "none",
+                            d: "M0 0h24v24H0z",
+                            fill: "none"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", { attrs: { d: "M9 12l2 2l4 -4" } }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"
+                          }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(
+                    "\n                  Bảo hành tại nhà.\n                "
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "css-k4cc6o",
+                attrs: {
+                  href:
+                    "https://phongvu.vn/landing/dich-vu-sua-chua-va-bao-tri-phong-vu.html",
+                  target: "_blank"
+                }
+              },
+              [_vm._v("Xem chi tiết")]
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "product_details-specifications" }, [
+      _c("div", { staticClass: "css-197050" }, [
+        _c("div", { staticClass: "pds__product-details css-c38e84" }, [
+          _vm._m(4),
+          _vm._v(" "),
+          _c("div", {
+            staticClass: "pds__pd__content css-4c1e9d",
+            class: { active: _vm.moreDetails },
+            domProps: { innerHTML: _vm._s(_vm.product_detail.product.Content) }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "content-expansion",
+              class: { deactive: _vm.moreDetails },
+              on: {
+                click: function($event) {
+                  _vm.moreDetails = true
+                }
+              }
+            },
+            [
+              _c("span", [_vm._v(" Xem thêm nội dung ")]),
+              _vm._v(" "),
+              _c(
+                "svg",
+                {
+                  staticClass: "icon icon-tabler icon-tabler-chevron-down",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "16",
+                    height: "16",
+                    viewBox: "0 0 24 24",
+                    "stroke-width": "2",
+                    stroke: "#4780c7",
+                    fill: "none",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }
+                  }),
+                  _vm._v(" "),
+                  _c("polyline", { attrs: { points: "6 9 12 15 18 9" } })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "collapse-content",
+              class: { active: _vm.moreDetails },
+              on: {
+                click: function($event) {
+                  _vm.moreDetails = false
+                }
+              }
+            },
+            [
+              _c("span", [_vm._v(" Thu gọn nội dung ")]),
+              _vm._v(" "),
+              _c(
+                "svg",
+                {
+                  staticClass: "icon icon-tabler icon-tabler-chevron-up",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "16",
+                    height: "16",
+                    viewBox: "0 0 24 24",
+                    "stroke-width": "2",
+                    stroke: "#4780c7",
+                    fill: "none",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }
+                  }),
+                  _vm._v(" "),
+                  _c("polyline", { attrs: { points: "6 15 12 9 18 15" } })
+                ]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "pds__specifications css-357cbb" }, [
+          _vm._m(5),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "pds__s__content" },
+            _vm._l(_vm.specifications, function(s, indexST) {
+              return _c("div", { key: indexST, staticClass: "css-eeaa32" }, [
+                _c("div", { staticClass: "name-specification css-01406a" }, [
+                  _vm._v(_vm._s(s.name))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "value-specification css-a288a0" }, [
+                  _vm._v(_vm._s(s.value))
+                ])
+              ])
+            }),
+            0
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "pp__gt__close-enlarge-image",
+        staticStyle: { display: "none" }
+      },
+      [
+        _c("p", { staticClass: "gt__cei__icon-times" }, [
+          _c("i", { staticClass: "fas fa-times" })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "css-5nimvs" }, [
+      _vm._v("\n                  Thương hiệu\n                  "),
+      _c(
+        "a",
+        { staticClass: "css-c2cixi", attrs: { href: "/search?brands=acer" } },
+        [_vm._v("ACER")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "css-ji66tv" }, [
+      _c("div", { staticClass: "css-ji66tv" }, [
+        _c("button", { staticClass: "css-33xjxx" }, [
+          _c("strong", [_vm._v("MUA NGAY")])
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "css-bkwyxf" }, [
+          _c("strong", [_vm._v("THÊM VÀO GIỎ HÀNG")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "css-5ri8n0" }, [
+      _c("span", {
+        staticClass: "css-swn1i6",
+        attrs: { size: "24", color: "#53c305" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "css-1plrovb" }, [
+        _vm._v("Sản phẩm được miễn phí giao hàng")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "pds__title css-88daca" }, [
+      _c("p", { staticClass: "css-cdb9a5" }, [_vm._v("Mô tả sản phẩm")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "pds__title css-88daca" }, [
+      _c("p", { staticClass: "css-cdb9a5" }, [_vm._v("Thông số kĩ thuật")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductsComponent.vue?vue&type=template&id=5ecce49e&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProductsComponent.vue?vue&type=template&id=5ecce49e& ***!
@@ -55840,6 +57480,7 @@ Vue.component('menu-panel-component', __webpack_require__(/*! ./components/MenuP
 Vue.component('products-component', __webpack_require__(/*! ./components/ProductsComponent.vue */ "./resources/js/components/ProductsComponent.vue")["default"]);
 Vue.component('pagination-component', __webpack_require__(/*! ./components/PaginationComponent.vue */ "./resources/js/components/PaginationComponent.vue")["default"]);
 Vue.component('search-indicator-component', __webpack_require__(/*! ./components/SearchIndicatorComponent.vue */ "./resources/js/components/SearchIndicatorComponent.vue")["default"]);
+Vue.component('product-detail-component', __webpack_require__(/*! ./components/ProductDetailComponent.vue */ "./resources/js/components/ProductDetailComponent.vue")["default"]);
 var FilterComponent = Vue.component('filter-component', __webpack_require__(/*! ./components/FilterComponent.vue */ "./resources/js/components/FilterComponent.vue")["default"]); // const vtest = Vue.component('test-component', require('./components/TestComponent.vue').default);
 
 /**
@@ -56344,6 +57985,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PaginationComponent_vue_vue_type_template_id_5cc156e8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PaginationComponent_vue_vue_type_template_id_5cc156e8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ProductDetailComponent.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/ProductDetailComponent.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProductDetailComponent_vue_vue_type_template_id_62e50068___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProductDetailComponent.vue?vue&type=template&id=62e50068& */ "./resources/js/components/ProductDetailComponent.vue?vue&type=template&id=62e50068&");
+/* harmony import */ var _ProductDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductDetailComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ProductDetailComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ProductDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProductDetailComponent_vue_vue_type_template_id_62e50068___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProductDetailComponent_vue_vue_type_template_id_62e50068___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ProductDetailComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ProductDetailComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/ProductDetailComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ProductDetailComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductDetailComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ProductDetailComponent.vue?vue&type=template&id=62e50068&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/ProductDetailComponent.vue?vue&type=template&id=62e50068& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductDetailComponent_vue_vue_type_template_id_62e50068___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ProductDetailComponent.vue?vue&type=template&id=62e50068& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductDetailComponent.vue?vue&type=template&id=62e50068&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductDetailComponent_vue_vue_type_template_id_62e50068___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductDetailComponent_vue_vue_type_template_id_62e50068___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
