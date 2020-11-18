@@ -12,6 +12,7 @@ use App\Models\Promotion\PmtDetail_PmtPackage_Model;
 class Product extends Model
 {
   private $prodNumbDisplayed = 10;
+  private $similarProdNumbs = 20;
 
   public function totalNumbProdDisplayed() {
     return Product::whereNotIn('Status',[2,3]) -> count(); // 2: ẩn, 3: xóa
@@ -106,17 +107,10 @@ class Product extends Model
                       -> get();
     }
 
-    $products = array();
-    foreach($prodsFilteredPaging as $prod) {
-      $prodDetailM = new ProductDetailModel();
-      $prodDetailM -> ProductsForHomepage_PDM($prod);
-      array_push($products, $prodDetailM);
-    }
-
     \Debugbar::warning("Các sản phẩm thỏa mãn giá trị tìm kiếm ở ProductModel !" );
     \Debugbar::info($prodsFilteredPaging);
                       
-    return ["total_pages" => ($showAll == 0 ? ceil($productsDB  -> count() / $this -> prodNumbDisplayed) : 0 ), "listProducts" => $products];
+    return ["total_pages" => ($showAll == 0 ? ceil($productsDB  -> count() / $this -> prodNumbDisplayed) : 0 ), "listProducts" => $this -> ProductDetailModel_PDM($prodsFilteredPaging)];
   }
 
   // Lấy các sản phẩm theo bộ lọc
@@ -158,7 +152,7 @@ class Product extends Model
       \Debugbar::warning("Các sản phẩm cuối cùng sau khi lọc và bộ lọc >= 2!");
       \Debugbar::info($productsFiltered);
       return array("totalPages" => ceil($productsFiltered -> count() / $this -> prodNumbDisplayed), 
-      "listProducts" => $this -> getProductsFilter_PDM
+      "listProducts" => $this -> ProductDetailModel_PDM
       ($productsFiltered -> skip($this -> prodNumbDisplayed * ($page - 1)) -> take($this -> prodNumbDisplayed)));
     }
 
@@ -166,12 +160,42 @@ class Product extends Model
     \Debugbar::info($products);
 
     return array("totalPages" => ceil($products -> count() / $this -> prodNumbDisplayed), 
-    "listProducts" => $this -> getProductsFilter_PDM
+    "listProducts" => $this -> ProductDetailModel_PDM
     ($products -> skip($this -> prodNumbDisplayed * ($page - 1)) -> take($this -> prodNumbDisplayed)));
   }
-  public function getProductsFilter_PDM($filteredProds) {
+
+  // Lấy các sản phẩm tương tự
+  public function SimilarProducts_PM($prod) {
+    $similarProds = DB::table('Products as Prod') -> where('CategoryID', $prod -> CategoryID)
+                  -> join('Product_Specifications as PS', function($join){
+                    $join -> on('ID', '=', 'PS.ProductID')
+                          -> where('PS.SpecificationID', 11); // 11 là mã thương hiệu
+                  })
+                  -> where('PS.Value', $prod -> ValueS)
+                  -> whereNotIn('Status',[2,3])
+                  -> take($similarProdNumbs)
+                  -> select('Prod.ID','Prod.Name','Prod.Alias','Prod.Image','Prod.MoreImages','Prod.Price','Prod.OriginalPrice',
+                              'Prod.PromotionPrice','Prod.Quantity','Prod.PromotionPackageID')
+                  -> get();
+    return $this -> ProductDetailModel_PDM($similarProds);
+  }
+
+  // Lấy các sản phẩm cùng thương hiệu
+  public function ProdsSameBrand($brandName) {
+    $prodsSameBrand = DB::table('Product_Specifications as PS') -> where('PS.Product_Specifications', 11) // 11: là mã thông số thương hiệu
+                      -> where('PS.Value', $brandName)
+                      -> join('Products as Prod', 'PS.ProductID', '=', 'Prod.ID')
+                      -> whereNotIn('Prod.Status',[2,3])
+                      -> select('Prod.ID','Prod.Name','Prod.Alias','Prod.Image','Prod.MoreImages','Prod.Price','Prod.OriginalPrice',
+                              'Prod.PromotionPrice','Prod.Quantity','Prod.PromotionPackageID')
+                      -> get();
+    return $this -> ProductDetailModel_PDM($prodsSameBrand);
+  }
+
+  // Định dạng các sản phẩm được hiển thị ở trang home
+  public function ProductDetailModel_PDM($prods) {
     $products = array();
-    foreach($filteredProds as $prod) {
+    foreach($prods as $prod) {
       $prodDetailM = new ProductDetailModel();
       $prodDetailM -> ProductsForHomepage_PDM($prod);
       array_push($products, $prodDetailM);
