@@ -1,1229 +1,1905 @@
 // Prefix
 @use '../prefix';
-
 // Common Style
 @use '../common';
-
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variable
 @import '../variables';
-
 .css-82517a {
-  background-color: #1435c3;
+    background-color: #1435c3;
 }
 
 .css-2a86d2 {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  max-width: 1264px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 1264px;
 }
 
 .css-4c8fe3 {
-  @include prefix.flex();
-  @include prefix.flex-direction(row);
-  color: #FFFFFF;
-  @include prefix.flex-alignItem(center);
-  a {
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: none;
-    color: #fff;
-  }
-
+    @include prefix.flex();
+    @include prefix.flex-direction(row);
+    color: #FFFFFF;
+    @include prefix.flex-alignItem(center);
+    a {
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: none;
+        color: #fff;
+    }
 }
 
 .css-291b85 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  color: #fff;
-  margin-right: auto;
-  @include prefix.flex();
-  @include prefix.flex-alignItem(center);
-  padding: 0;
-  height: 42px;
-  line-height: 42px;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    margin-right: auto;
+    @include prefix.flex();
+    @include prefix.flex-alignItem(center);
+    padding: 0;
+    height: 42px;
+    line-height: 42px;
 }
 
-.css-f88ce3 , .css-f88ce3, .css-7b8572, .css-ba45e7 {
-  cursor: pointer;
-  border-radius: 4px;
-  overflow: hidden;
-  line-height: 1rem;
-  padding: .365rem .75rem;
-  @include prefix.inline-flex();
-  @include prefix.flex-alignItem(center);
-  @include prefix.flex-justifyContent(center);
-  @include prefix.flex-box-pack(center);
-  text-align: center;
-  background-color: transparent;
-  border-color: transparent;
-  color: #333333;
-  border-width: 1px;
-  border-style: solid;
-  @include prefix.user-select(none);
-  @include prefix.text-decoration(none);
-  @include prefix.flex-direction(row);
-  position: relative;
-  color: #fff;
-  border-radius: 0;
-  font-size: 0.825rem;
-  font-weight: 500;
+.css-f88ce3,
+.css-f88ce3,
+.css-7b8572,
+.css-ba45e7 {
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+    line-height: 1rem;
+    padding: .365rem .75rem;
+    @include prefix.inline-flex();
+    @include prefix.flex-alignItem(center);
+    @include prefix.flex-justifyContent(center);
+    @include prefix.flex-box-pack(center);
+    text-align: center;
+    background-color: transparent;
+    border-color: transparent;
+    color: #333333;
+    border-width: 1px;
+    border-style: solid;
+    @include prefix.user-select(none);
+    @include prefix.text-decoration(none);
+    @include prefix.flex-direction(row);
+    position: relative;
+    color: #fff;
+    border-radius: 0;
+    font-size: 0.825rem;
+    font-weight: 500;
 }
 
 .css-f88ce3 {
-  @include prefix.user-select(none);
-  position: relative;
-  color: #fff;
-  border-radius: 0;
-  font-size: 0.825rem;
-  font-weight: 500;
-  .highlight {
-    margin-left: .5rem;
-    color: #64B5F6;
-  }
+    @include prefix.user-select(none);
+    position: relative;
+    color: #fff;
+    border-radius: 0;
+    font-size: 0.825rem;
+    font-weight: 500;
+    .highlight {
+        margin-left: .5rem;
+        color: #64B5F6;
+    }
 }
 
 .css-508a4d {
-  width: 0.4rem;
-  height: 0.4rem;
+    width: 0.4rem;
+    height: 0.4rem;
 }
 
-.css-c4d707, .css-46e913, .css-07dac8, .css-12c423 {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  @include prefix.mask-size(contain);
-  @include prefix.mask-repeat(no-repeat);
+.css-c4d707,
+.css-46e913,
+.css-07dac8,
+.css-12c423 {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    @include prefix.mask-size(contain);
+    @include prefix.mask-repeat(no-repeat);
 }
 
 // Header bottom
 .css-2b3b80 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  background-color: rgb(255, 255, 255);
-  position: sticky;
-  top: 0px;
-  z-index: 1040;
-  box-shadow: rgba(0, 0, 0, 0.03) 0px 0.5rem 1rem 0px;
-  height: 90px;
-  transition: height 0.2s ease 0s;
-
-  .nav-items {
-    > button, .button {
-      min-width: 90px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    position: sticky;
+    top: 0px;
+    z-index: 1040;
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 0.5rem 1rem 0px;
+    height: 90px;
+    transition: height 0.2s ease 0s;
+    .nav-items {
+        >button,
+        .button {
+            min-width: 90px;
+        }
     }
-  }
 }
+
 .css-2b3b80.active {
-  position: unset;
+    position: unset;
 }
+
 .css-0fb746 {
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  z-index: 550;
-  background: rgba(0, 0, 0, 0.5);
-  transition-delay: 0.1s;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 550;
+    background: rgba(0, 0, 0, 0.5);
+    transition-delay: 0.1s;
 }
+
 .css-fef782 {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  max-width: 1264px;
-  @include prefix.flex();
-  @include prefix.flex-direction(row);
-  @include prefix.flex-alignItem(center);
-  position: relative;
-  height: 100%;
-  @include prefix.flex-wrap(wrap);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 1264px;
+    @include prefix.flex();
+    @include prefix.flex-direction(row);
+    @include prefix.flex-alignItem(center);
+    position: relative;
+    height: 100%;
+    @include prefix.flex-wrap(wrap);
 }
 
 .css-0c68ee {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
 }
 
 .css-cddb72 {
-  @include prefix.flex();
-  @include prefix.flex-direction(row);
-  @include prefix.flex-alignItem(center);
+    @include prefix.flex();
+    @include prefix.flex-direction(row);
+    @include prefix.flex-alignItem(center);
 }
 
 .css-1hqxbf2 {
-  height: 35px;
-  width: auto;
+    height: 35px;
+    width: auto;
 }
 
 .css-e30694 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: auto;
-  @include prefix.flex-1();
-  padding-left: 16px;
-  padding-right: 16px;
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+    width: auto;
+    @include prefix.flex-1();
+    padding-left: 16px;
+    padding-right: 16px;
 }
+
 .css-da0f8e {
-  position: relative;
+    position: relative;
 }
+
 .css-382c89 {
-  @include prefix.flex();
-  background-color: #F5F5F5;
-  border: 1px solid #dcdcdc;
-  padding: 1px;
-  border-radius: 8px;
-  border: 1px solid #eaeaea;
+    @include prefix.flex();
+    background-color: #F5F5F5;
+    border: 1px solid #dcdcdc;
+    padding: 1px;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
 }
+
 .css-b75d52 {
-  display: block;
-  width: 100%;
-  border-radius: 4px;
-  padding: 0.375rem 0.75rem;
-  border: 1px solid #e0e0e0;
-  min-height: 16px;
-  border: 0;
-  background-color: transparent;
-  @include prefix.flex-1();
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #e0e0e0;
+    min-height: 16px;
+    border: 0;
+    background-color: transparent;
+    @include prefix.flex-1();
 }
+
 .css-65db16 {
-  text-align: center;
-  background-color: #1435c3;
-  border-color: #1435c3;
-  color: #FFFFFF;
-  border-width: 1px;
-  border-style: solid;
-  @include prefix.user-select(none);
-  position: relative;
-  height: 36px;
-  width: 36px;
-  border-radius: 8px;
+    text-align: center;
+    background-color: #1435c3;
+    border-color: #1435c3;
+    color: #FFFFFF;
+    border-width: 1px;
+    border-style: solid;
+    @include prefix.user-select(none);
+    position: relative;
+    height: 36px;
+    width: 36px;
+    border-radius: 8px;
 }
 
 .css-7850a7 {
-  position: absolute;
-  background: #fff;
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px 0 rgba(0,0,0,0.1);
-  padding: 0.5rem;
-  display: none;
-  &.active {
-    display: block;
-  }
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    display: none;
+    &.active {
+        display: block;
+    }
 }
+
+.css-418419 {
+    display: none;
+    margin: 60px auto;
+    &.active {
+        display: block;
+    }
+}
+
+.css-c2ed66 {
+    width: 200px;
+    margin: 10px auto;
+}
+
+.css-9cba25 {
+    text-align: center;
+}
+
 .css-f566aa {
-  height: 500px;
-  overflow-y: auto;
-  margin-bottom: 7px;
-  padding-right: 5px;
-  box-shadow: 0 4px 6px -2px grey;
-  /* width */
-  &::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  /* Track */
-  &::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: #b2b2b2;
-    border-radius: 10px;
-  }
-
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: #b2b2b2;
-  }
+    height: 500px;
+    overflow-y: auto;
+    margin-bottom: 7px;
+    padding-right: 5px;
+    box-shadow: 0 4px 6px -2px grey;
+    /* width */
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    /* Track */
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #b2b2b2;
+        border-radius: 10px;
+    }
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #b2b2b2;
+    }
 }
+
 .css-93b7d3 {
-  @include prefix.flex();
-  @include prefix.flex-justifyContent(flex-start);
-  @include prefix.flex-alignItem(center);
-  overflow: hidden;
-  background: #f2f2f269;
-  border-radius: 5px;
-  padding: 7px;
-  margin-bottom: 7px;
+    @include prefix.flex();
+    @include prefix.flex-justifyContent(flex-start);
+    @include prefix.flex-alignItem(center);
+    overflow: hidden;
+    background: #f2f2f269;
+    border-radius: 5px;
+    padding: 7px;
+    margin-bottom: 7px;
 }
+
 .css-82a866 {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-size: 0.85rem;
-  color: #333333;
-  &:hover {
-    color: #446676;
-  }
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+    color: #333333;
+    &:hover {
+        color: #446676;
+    }
 }
+
 .css-f8a39b {
-  width: 25%;
-  height: 85px;
-  margin-right: 12px;
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px grey, -1px -1px 5px grey;
-  overflow: hidden;
+    width: 25%;
+    height: 85px;
+    margin-right: 12px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px grey, -1px -1px 5px grey;
+    overflow: hidden;
 }
+
 .css-css-b89921 {
-  width: 30%;
+    width: 30%;
 }
+
 .css-e37899 {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
+
 .css-5f796a {
-  font-size: 0.6875rem;
-  color: #c0363c;
+    font-size: 0.6875rem;
+    color: #c0363c;
 }
-.css-a59f33, .css-2b99b8 {
-  display: flex;
+
+.css-a59f33,
+.css-2b99b8 {
+    display: flex;
 }
-.css-b89921{
-  width: 30%;
+
+.css-b89921 {
+    width: 30%;
 }
+
 .css-6f07dc {
-  text-align: center;
-  color: #ffffff;
-  background-color: #3a6caa;
-  padding: 5px;
-  width: 75%;
-  margin: auto;
-  border: none;
-  outline: none!important;
-  border-radius: 5px;
-  &:active {
-    box-shadow: 1px 1px 5px gray, -1px -1px 5px gray!important;
-  }
+    text-align: center;
+    color: #ffffff;
+    background-color: #3a6caa;
+    padding: 5px;
+    width: 75%;
+    margin: auto;
+    border: none;
+    outline: none!important;
+    border-radius: 5px;
+    &:active {
+        box-shadow: 1px 1px 5px gray, -1px -1px 5px gray!important;
+    }
 }
 
 .css-4a10cf {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: flex;
-  width: auto;
-  @include prefix.flex-box-pack(end);
-  @include prefix.flex-justifyContent(flex-end);
-}
-.css-c9b468 {
-  @include prefix.flex();
-  @include prefix.flex-alignItem(center);
-}
-.css-2b3b80  .nav-items > button, .css-2b3b80 .nav-items .button {
-  min-width: 90px;
-}
-.css-7b8572 {
-  @include prefix.user-select(none);
-  @include prefix.flex-direction(column);
-  position: relative;
-  font-size: 0.75rem;
-  position: relative;
-  color: #848788;
-  &:hover {
-    color: blue;
-    @include prefix.text-decoration(none);
-    svg {
-      stroke: blue;
-    }
-  }
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+    display: flex;
+    width: auto;
+    @include prefix.flex-box-pack(end);
+    @include prefix.flex-justifyContent(flex-end);
 }
 
-.css-5158c4, .css-b1e5aa, .css-6f221a, .css-ab162b {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
+.css-c9b468 {
+    @include prefix.flex();
+    @include prefix.flex-alignItem(center);
 }
+
+.css-2b3b80 .nav-items>button,
+.css-2b3b80 .nav-items .button {
+    min-width: 90px;
+}
+
+.css-7b8572 {
+    @include prefix.user-select(none);
+    @include prefix.flex-direction(column);
+    position: relative;
+    font-size: 0.75rem;
+    position: relative;
+    color: #848788;
+    &:hover {
+        color: blue;
+        @include prefix.text-decoration(none);
+        svg {
+            stroke: blue;
+        }
+    }
+}
+
+.css-5158c4,
+.css-b1e5aa,
+.css-6f221a,
+.css-ab162b {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
+
 .css-569256 {
-  width: 100%;
-  width: auto;
+    width: 100%;
+    width: auto;
 }
+
 .css-052cfc {
-  width: 100%;
+    width: 100%;
 }
+
 .css-0c6ffe {
-  background-color: transparent;
-  opacity: 0;
+    background-color: transparent;
+    opacity: 0;
 }
 
 .css-82a2bb {
-  width: 100%;
-  padding-left: 10px;
+    width: 100%;
+    padding-left: 10px;
 }
+
 .css-982563 {
-  width: 100%;
+    width: 100%;
 }
+
 .css-ba45e7 {
-  text-align: center;
-  background-color: #FFFFFF;
-  border-color: #333333;
-  border-width: 1px;
-  border-style: solid;
-  position: relative;
-  border-color: #e0e0e0;
-  border-radius: 5px;
+    text-align: center;
+    background-color: #FFFFFF;
+    border-color: #333333;
+    border-width: 1px;
+    border-style: solid;
+    position: relative;
+    border-color: #e0e0e0;
+    border-radius: 5px;
 }
+
 .css-e8a5ca {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
 }
+
 .css-1f11d1 {
-  color: #585858;
-  font-weight: 600;
+    color: #585858;
+    font-weight: 600;
 }
 
 .css-a4cf9b {
-  visibility: hidden;
-  z-index: 999;
-  transform: translate(16px, 72px) !important;
-}
-.css-a4cf9b.active {
-  visibility: visible;
-}
-.css-3846b3 {
-  background-color: transparent;
-  opacity: 1;
-}
-.css-bbfd09 {
-  width: 204px;
-  border-radius: 0.5rem;
-}
-.css-768aa5 {
-  z-index: 550;
-  position: relative;
-}
-.css-74506d {
-  padding: 7px 0;
-  font-size: 0.75rem;
-  @include prefix.flex-alignItem(center);
-  border-radius: 8px;
-  background: #fff;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem rgba(0,0,0,0.08);
-  // min-height: 456px;
-}
-.css-167cc7 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  @include prefix.flex-direction(column);
-  @include prefix.flex-wrap(nowrap);
-  @include prefix.flex();
-}
-.css-036586 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-}
-.css-270e69 {
-  cursor: pointer;
-  @include prefix.text-decoration(none);
-}
-.css-7ef8c6 {
-  @include prefix.flex();
-  @include prefix.flex-alignItem(center);
-  @include prefix.flex-box-pack(justity);
-  @include prefix.flex-justifyContent(space-between);
-  background: #fff;
-  padding: 0.6rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #5e5e5e;
-  padding: 0 0.4rem;
-  line-height: 32px;
-  border-radius: 4px;
-  overflow: hidden;
-  &:hover {
-    background: #ececec;
-  }
-}
-.css-b45459 {
-  position: relative;
-  overflow: hidden;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-  @include prefix.flex();
-  cursor: unset;
-  z-index: 0;
-  margin: auto;
-  border-radius: 0px;
-  height: 22px !important;
-  width: 22px;
-  // content-visibility: auto;
-}
-.css-4197f7 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  // -webkit-transition: -webkit-transform 0.5s;
-  @include prefix.transition(transform 0.5s);
-}
-.css-f73e11 {
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden;
-  margin: 0 0.6rem;
-  @include prefix.flex-1();
-  font-weight: 600;
+    visibility: hidden;
+    z-index: 999;
+    transform: translate(16px, 72px) !important;
 }
 
+.css-a4cf9b.active {
+    visibility: visible;
+}
+
+.css-3846b3 {
+    background-color: transparent;
+    opacity: 1;
+}
+
+.css-bbfd09 {
+    width: 204px;
+    border-radius: 0.5rem;
+}
+
+.css-768aa5 {
+    z-index: 550;
+    position: relative;
+}
+
+.css-74506d {
+    padding: 7px 0;
+    font-size: 0.75rem;
+    @include prefix.flex-alignItem(center);
+    border-radius: 8px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem rgba(0, 0, 0, 0.08);
+    // min-height: 456px;
+}
+
+.css-167cc7 {
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+    @include prefix.flex-direction(column);
+    @include prefix.flex-wrap(nowrap);
+    @include prefix.flex();
+}
+
+.css-036586 {
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+    width: 100%;
+}
+
+.css-270e69 {
+    cursor: pointer;
+    @include prefix.text-decoration(none);
+}
+
+.css-7ef8c6 {
+    @include prefix.flex();
+    @include prefix.flex-alignItem(center);
+    @include prefix.flex-box-pack(justity);
+    @include prefix.flex-justifyContent(space-between);
+    background: #fff;
+    padding: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #5e5e5e;
+    padding: 0 0.4rem;
+    line-height: 32px;
+    border-radius: 4px;
+    overflow: hidden;
+    &:hover {
+        background: #ececec;
+    }
+}
+
+.css-b45459 {
+    position: relative;
+    overflow: hidden;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    @include prefix.flex();
+    cursor: unset;
+    z-index: 0;
+    margin: auto;
+    border-radius: 0px;
+    height: 22px !important;
+    width: 22px;
+    // content-visibility: auto;
+}
+
+.css-4197f7 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    // -webkit-transition: -webkit-transform 0.5s;
+    @include prefix.transition(transform 0.5s);
+}
+
+.css-f73e11 {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    margin: 0 0.6rem;
+    @include prefix.flex-1();
+    font-weight: 600;
+}
 
 // Menu panel
 .css-baa804 {
-  position: absolute;
-  top: 0px;
-  left: 100%;
-  // height: 100%;
-  z-index: 550;
-  padding-left: 10px;
-  width: calc(1184px - 100%);
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    // height: 100%;
+    z-index: 550;
+    padding-left: 10px;
+    width: calc(1184px - 100%);
 }
+
 .css-8d193e {
-  border-radius: 8px;
-  font-size: 0.75rem;
-  background-color: rgb(255, 255, 255);
-  height: 100%;
-  box-shadow: rgba(0, 0, 0, 0.08) 0.1rem 0.1rem 0.5rem 0.1rem;
-  display: flex;
-  flex: 1 1 0%;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.08) 0.1rem 0.1rem 0.5rem 0.1rem;
+    display: flex;
+    flex: 1 1 0%;
 }
-.css-8d193e, .css-bbfd09 {
-  box-shadow: 1px 1px 2px grey, -1px -1px 2px grey;
+
+.css-8d193e,
+.css-bbfd09 {
+    box-shadow: 1px 1px 2px grey, -1px -1px 2px grey;
 }
+
 .css-249347 {
-  width: calc(100% - 242px);
-  padding: 0.5rem 1rem;
+    width: calc(100% - 242px);
+    padding: 0.5rem 1rem;
 }
+
 .css-83bd92 {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
-  padding-bottom: 0.7rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    padding-bottom: 0.7rem;
 }
+
 .css-ae6801 {
-  flex: 0 0 auto;
-  width: 25%;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+    flex: 0 0 auto;
+    width: 25%;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
 }
+
 .css-a8bec4 {
-  font-weight: 500;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  justify-content: flex-end;
-  cursor: pointer;
-  line-height: 1.5rem;
-  margin-right: -0.5rem;
-  color: rgb(20, 53, 195) !important;
+    font-weight: 500;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    cursor: pointer;
+    line-height: 1.5rem;
+    margin-right: -0.5rem;
+    color: rgb(20, 53, 195) !important;
 }
+
 .css-ebe02b {
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
 .css-b6dcc8 {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  position: relative;
-  top: -6px;
-  left: 2px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    position: relative;
+    top: -6px;
+    left: 2px;
 }
+
 .css-f411ff {
-  flex: 0 0 auto;
-  width: 75%;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+    flex: 0 0 auto;
+    width: 75%;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
 }
+
 .css-6ac2a3 {
-  display: inline-block;
-  white-space: nowrap;
+    display: inline-block;
+    white-space: nowrap;
 }
+
 .css-62f2d3 {
-  width: 1px;
-  background-color: rgb(179, 179, 179);
-  height: 12px;
-  position: relative;
-  display: inline-block;
-  top: 1px;
+    width: 1px;
+    background-color: rgb(179, 179, 179);
+    height: 12px;
+    position: relative;
+    display: inline-block;
+    top: 1px;
 }
+
 .css-1892a4 {
-  &:hover {
-    font-weight: bold;
-  }
-  color: rgb(17, 17, 17);
-  padding: 0px 0.5rem;
-  line-height: 1.5rem;
-  cursor: pointer;
-  display: inline-block;
-  color: inherit;
+    &:hover {
+        font-weight: bold;
+    }
+    color: rgb(17,
+    17,
+    17);
+    padding: 0px 0.5rem;
+    line-height: 1.5rem;
+    cursor: pointer;
+    display: inline-block;
+    color: inherit;
 }
+
 .css-a834e0 {
-  margin-left: 0.5rem;
-  width: 234px;
-  cursor: pointer;
+    margin-left: 0.5rem;
+    width: 234px;
+    cursor: pointer;
 }
+
 .css-c1b633 {
-  position: relative;
-  overflow: hidden;
-  flex: 1 0 auto;
-  display: flex;
-  cursor: unset;
-  z-index: 0;
-  margin: auto;
-  border-radius: 0px 0.5rem 0.5rem 0px;
-  padding-bottom: 194.872%;
-  width: 100%;
+    position: relative;
+    overflow: hidden;
+    flex: 1 0 auto;
+    display: flex;
+    cursor: unset;
+    z-index: 0;
+    margin: auto;
+    border-radius: 0px 0.5rem 0.5rem 0px;
+    padding-bottom: 194.872%;
+    width: 100%;
 }
+
 .css-86d845 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  // object-fit: contain;
-  -webkit-transition: -webkit-transform 0.5s;
-  -webkit-transition: transform 0.5s;
-  transition: transform 0.5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // object-fit: contain;
+    -webkit-transition: -webkit-transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    transition: transform 0.5s;
 }
 
 // List products
-.css-5542cb, .css-060572 {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  @extend %padding-lr-1rem;
-  @extend %margin-lr-auto;
-  max-width: 1264px;
-  border-radius: 5px;
-  background: #fff;
+.css-5542cb,
+.css-060572 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    @extend %padding-lr-1rem;
+    @extend %margin-lr-auto;
+    max-width: 1264px;
+    border-radius: 5px;
+    background: #fff;
 }
+
 .css-b59019 {
-  background: #fff;
-  width: 100%;
-  border-bottom: 1px solid #eaeaea;
-  font-size: 14px;
-  height: 64px;
-  @include prefix.flex();
-  @include prefix.flex-box-pack(justify);
-  @include prefix.flex-justifyContent(start);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+    background: #fff;
+    width: 100%;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 14px;
+    height: 64px;
+    @include prefix.flex();
+    @include prefix.flex-box-pack(justify);
+    @include prefix.flex-justifyContent(start);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
+
 .css-3fb406 {
-  @include prefix.flex();
-  @include prefix.flex-box-pack(justify);
-  @include prefix.flex-justifyContent(space-between);
-  @include prefix.flex-alignItem(center);
+    @include prefix.flex();
+    @include prefix.flex-box-pack(justify);
+    @include prefix.flex-justifyContent(space-between);
+    @include prefix.flex-alignItem(center);
 }
+
 .css-81293a {
-  margin-right: 2rem;
-  font-weight: 600;
+    margin-right: 2rem;
+    font-weight: 600;
 }
+
 .css-16a7eb {
-  border-radius: 4px;
-  display: inline-block;
-  border: solid 1px #e0e0e0;
-  background-color: #fff;
-  padding: 0.5rem 1.25rem;
-  position: relative;
-  overflow: hidden;
-  margin-right: 1rem;
-  cursor: pointer;
+    border-radius: 4px;
+    display: inline-block;
+    border: solid 1px #e0e0e0;
+    background-color: #fff;
+    padding: 0.5rem 1.25rem;
+    position: relative;
+    overflow: hidden;
+    margin-right: 1rem;
+    cursor: pointer;
 }
+
 .css-81f8d9 {
-  font-weight: bold;
-  @include prefix.flex();
-  @include prefix.flex-alignItem(center);
-  @include prefix.flex-box-pack(start);
-  @include prefix.flex-justifyContent(flex-start);
-  font-size: 0.875rem;
+    font-weight: bold;
+    @include prefix.flex();
+    @include prefix.flex-alignItem(center);
+    @include prefix.flex-box-pack(start);
+    @include prefix.flex-justifyContent(flex-start);
+    font-size: 0.875rem;
 }
+
 .css-e5afe4 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
+
 .css-5111ad {
-  height: 40px;
-  line-height: 37px;
-  padding: 0 10px;
-  cursor: pointer;
-  @include prefix.flex();
-  @include prefix.flex-alignItem(center);
+    height: 40px;
+    line-height: 37px;
+    padding: 0 10px;
+    cursor: pointer;
+    @include prefix.flex();
+    @include prefix.flex-alignItem(center);
 }
+
 .css-7044ff {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
+
 .css-f613cc {
-  width: 100px;
-  height: 2.1rem;
-  line-height: 2.1rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  text-align: center;
-  box-sizing: border-box;
-  margin: 0 0.35rem;
-  z-index: 1;
+    width: 100px;
+    height: 2.1rem;
+    line-height: 2.1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0 0.35rem;
+    z-index: 1;
 }
+
 .css-709319 {
-  background: #1435c3;
-  border: none;
-  color: #fff;
-  padding: 0px 15px;
-  border-radius: 4px;
-  margin-left: 5px;
-  visibility: visible;
-  height: 2.1rem;
-  line-height: 2.1rem;
-  visibility: hidden;
+    background: #1435c3;
+    border: none;
+    color: #fff;
+    padding: 0px 15px;
+    border-radius: 4px;
+    margin-left: 5px;
+    visibility: visible;
+    height: 2.1rem;
+    line-height: 2.1rem;
+    visibility: hidden;
 }
-
-
-
 
 .css-2e8efa {
-  padding: 0.3rem;
-  background: rgb(255, 255, 255);
-  cursor: pointer;
-  display: block;
-  text-decoration: none;
-  color: rgb(51, 51, 51);
-  border-radius: 0.5rem;
-  height: 100%;
+    padding: 0.3rem;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: rgb(51, 51, 51);
+    border-radius: 0.5rem;
+    height: 100%;
 }
+
 .css-a46f11 {
-  padding-bottom: 15px;
-  display: flex;
-  @include prefix.flex-wrap(wrap);
+    padding-bottom: 15px;
+    display: flex;
+    @include prefix.flex-wrap(wrap);
 }
+
 .css-2c7762 {
-  padding: 10px;
-  border-radius: 5px;
-  width: 20%;
-  display: block;
+    padding: 10px;
+    border-radius: 5px;
+    width: 20%;
+    display: block;
 }
+
 .css-506c78 {
-  height: 200px;
+    height: 200px;
 }
+
 .css-fde874 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: left;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  font-size: 13px;
-  max-height: 3.775rem;
-  min-height: 3.775rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    font-size: 13px;
+    max-height: 3.775rem;
+    min-height: 3.775rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
+
 .css-b38591 {
-  color: #d9852b;
-  font-size: 0.75rem;
-  margin-top: 2px;
-  line-height: 1rem;
+    color: #d9852b;
+    font-size: 0.75rem;
+    margin-top: 2px;
+    line-height: 1rem;
 }
+
 .css-e678cc {
-  @include prefix.flex();
-  @include prefix.flex-alignItem(center);
-  margin-top: 2px;
+    @include prefix.flex();
+    @include prefix.flex-alignItem(center);
+    margin-top: 2px;
 }
+
 .css-46c3ed {
-  @include prefix.flex();
-  @include prefix.flex-box-pack(justify);
-  @include prefix.flex-justifyContent(space-between);
-  color: #66BB6A;
+    @include prefix.flex();
+    @include prefix.flex-box-pack(justify);
+    @include prefix.flex-justifyContent(space-between);
+    color: #66BB6A;
 }
+
 .css-950c09 {
-  @include prefix.flex();
-  @include prefix.flex-wrap(wrap);
-  margin-left: 0.2rem;
+    @include prefix.flex();
+    @include prefix.flex-wrap(wrap);
+    margin-left: 0.2rem;
 }
+
 .css-49039d {
-  padding-left: 10px;
+    padding-left: 10px;
 }
+
 .css-3c7ce6 {
-  display: flex;
-  flex-direction: column;
-  -webkit-box-align: baseline;
-  align-items: baseline;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: baseline;
+    align-items: baseline;
 }
+
 .css-690a6b {
-  @include prefix.width-max-content();
-  display: inline-block;
-  margin-bottom: 0px;
-  font-size: 1rem;
-  color: rgb(20, 53, 195);
-  font-weight: bold;
+    @include prefix.width-max-content();
+    display: inline-block;
+    margin-bottom: 0px;
+    font-size: 1rem;
+    color: rgb(20, 53, 195);
+    font-weight: bold;
 }
+
 .css-950c09 {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 0.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0.2rem;
 }
+
 .css-8280ac {
-  display: flex;
-  flex-wrap: wrap;
-  @include prefix.flex-alignItem(center);
-  margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    @include prefix.flex-alignItem(center);
+    margin-top: 0.5rem;
 }
+
 .css-41ab48 {
-  font-size: 0.6875rem;
-  color: rgb(130, 134, 158);
+    font-size: 0.6875rem;
+    color: rgb(130, 134, 158);
 }
+
 .css-7bc7d3 {
-  margin: 0px 0.2rem;
-  @include prefix.flex();
-  height: 30px;
+    margin: 0px 0.2rem;
+    @include prefix.flex();
+    height: 30px;
 }
+
 .css-83b632 {
-  position: relative;
-  overflow: hidden;
-  flex: 1 0 auto;
-  display: flex;
-  cursor: unset;
-  z-index: 0;
-  margin-right: 5px;
-  border-radius: 4px;
-  border: 1px solid rgb(224, 224, 224);
-  width: 30px;
-  height: 30px !important;
+    position: relative;
+    overflow: hidden;
+    flex: 1 0 auto;
+    display: flex;
+    cursor: unset;
+    z-index: 0;
+    margin-right: 5px;
+    border-radius: 4px;
+    border: 1px solid rgb(224, 224, 224);
+    width: 30px;
+    height: 30px !important;
 }
+
 .css-21b9ec {
-  width: 40px;
-  height: 40px !important;
+    width: 40px;
+    height: 40px !important;
 }
+
 .css-904f61 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  @include prefix.transition(transform 0.5s);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    @include prefix.transition(transform 0.5s);
 }
+
 .css-48812d {
-  @include prefix.flex();
-  @include prefix.flex-alignItem(center);
-  @include prefix.flex-alignItem(center);
-  width: 100%;
+    @include prefix.flex();
+    @include prefix.flex-alignItem(center);
+    @include prefix.flex-alignItem(center);
+    width: 100%;
 }
+
 .css-c5818a {
-  @include prefix.width-max-content();
-  display: inline-block;
-  @include prefix.text-decoration(line-through);
-  color: #82869E;
-  font-size: 0.75rem;
-  width: 100%;
+    @include prefix.width-max-content();
+    display: inline-block;
+    @include prefix.text-decoration(line-through);
+    color: #82869E;
+    font-size: 0.75rem;
+    width: 100%;
 }
+
 .css-027579 {
-  font-size: 0.75rem;
-  color: #3096B3;
-  margin-left: 6px;
+    font-size: 0.75rem;
+    color: #3096B3;
+    margin-left: 6px;
 }
 
 // Footer
 .css-2156b4 {
-  width: 30%;
-  height: 350px;
-  overflow: hidden;
-  border-radius: 8px;
-  background-color: #d6d6d6;
-  box-shadow: 1px 1px 5px grey, -1px -1px 5px grey;
+    width: 30%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #d6d6d6;
+    box-shadow: 1px 1px 5px grey, -1px -1px 5px grey;
 }
+
 .css-1ff5d7 {
-  width: 60%;
+    width: 60%;
 }
+
 .css-060572 {
-  @include prefix.flex();
-  @include prefix.flex-justifyContent(space-between);
-  padding-top: 12px;
-  padding-bottom: 12px;
-  margin-bottom: 22px;
+    @include prefix.flex();
+    @include prefix.flex-justifyContent(space-between);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 22px;
 }
+
 .css-b1c5a5 {
-  @include prefix.flex();
-  margin-bottom: 45px;
+    @include prefix.flex();
+    margin-bottom: 45px;
 }
+
 .css-643ddd {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 50%;
-  text-align: left;
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+    width: 50%;
+    text-align: left;
 }
+
 // Cộng đồng NiViCi
 .css-556c6a {
-  font-weight: bold;
-  font-size: 14px;
-  margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
+
 .css-2e32a4 {
-  cursor: pointer;
-  border-radius: 4px;
-  overflow: hidden;
-  line-height: 1rem;
-  padding: .365rem .75rem;
-  @include prefix.inline-flex();
-  @include prefix.flex-alignItem(center);
-  @include prefix.flex-box-pack(center);
-  background-color: transparent;
-  border-color: transparent;
-  color: #333333;
-  border-width: 1px;
-  border-style: solid;
-  @include prefix.user-select(none);
-  @include prefix.text-decoration(none);
-  @include prefix.flex-direction(row);
-  position: relative;
-  width: 100%;
-  font-size: 12px;
-  color: #333;
-  padding-left: 0px;
-  text-align: left;
-  padding-bottom: 0px;
-  max-width: initial;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+    line-height: 1rem;
+    padding: .365rem .75rem;
+    @include prefix.inline-flex();
+    @include prefix.flex-alignItem(center);
+    @include prefix.flex-box-pack(center);
+    background-color: transparent;
+    border-color: transparent;
+    color: #333333;
+    border-width: 1px;
+    border-style: solid;
+    @include prefix.user-select(none);
+    @include prefix.text-decoration(none);
+    @include prefix.flex-direction(row);
+    position: relative;
+    width: 100%;
+    font-size: 12px;
+    color: #333;
+    padding-left: 0px;
+    text-align: left;
+    padding-bottom: 0px;
+    max-width: initial;
 }
+
 .css-8ece4e {
-  display: inline-block;
-  width: 16px;
+    display: inline-block;
+    width: 16px;
 }
+
 // Email liên hệ
 .css-057fe2 {
-  font-size: 12px;
-  width: 100%;
-  padding-bottom: 10px;
+    font-size: 12px;
+    width: 100%;
+    padding-bottom: 10px;
 }
+
 .css-057fe2 a {
-  @include prefix.text-decoration(none);
-  @include prefix.flex();
-  @include prefix.flex-alignItem(center);
+    @include prefix.text-decoration(none);
+    @include prefix.flex();
+    @include prefix.flex-alignItem(center);
 }
+
 // Phương thức thanh toán
 .css-eb03a4 {
-  width: 100%;
+    width: 100%;
 }
-.css-24329a{
-  cursor: pointer;
-  border-radius: 4px;
-  overflow: hidden;
-  line-height: 1rem;
-  padding: .365rem .75rem;
-  @include prefix.inline-flex();
-  @include prefix.flex-alignItem(center);
-  @include prefix.flex-box-pack(center);
-  @include prefix.flex-justifyContent(center);
-  text-align: center;
-  background-color: transparent;
-  border-color: transparent;
-  color: #333333;
-  border-width: 1px;
-  border-style: solid;
-  @include prefix.user-select(none);
-  @include prefix.text-decoration(none);
-  @include prefix.flex-direction(column);
-  position: relative;
-  font-size: 12px;
-  padding-left: 0px;
-  padding-bottom: 0px;
-  max-width: 80px;
-  @include prefix.flex-box-pack(start);
-  @include prefix.flex-justifyContent(flex-start);
+
+.css-24329a {
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+    line-height: 1rem;
+    padding: .365rem .75rem;
+    @include prefix.inline-flex();
+    @include prefix.flex-alignItem(center);
+    @include prefix.flex-box-pack(center);
+    @include prefix.flex-justifyContent(center);
+    text-align: center;
+    background-color: transparent;
+    border-color: transparent;
+    color: #333333;
+    border-width: 1px;
+    border-style: solid;
+    @include prefix.user-select(none);
+    @include prefix.text-decoration(none);
+    @include prefix.flex-direction(column);
+    position: relative;
+    font-size: 12px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    max-width: 80px;
+    @include prefix.flex-box-pack(start);
+    @include prefix.flex-justifyContent(flex-start);
 }
+
 .css-554658 {
-  display: inline;
-  font-size: 30px;
+    display: inline;
+    font-size: 30px;
 }
 
 .css-aa9c4a {
-  text-align: center;
-  padding: 8px;
-  background: #e3e3e3;
+    text-align: center;
+    padding: 8px;
+    background: #e3e3e3;
 }
 
 // Pagination 
-.css-0bc721  {
-  max-width: 1264px;
-  margin-left: auto;
-  margin-right: auto;
+.css-0bc721 {
+    max-width: 1264px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 .pa__list-page-numbers {
-  @include prefix.flex();
-  @include prefix.flex-justifyContent(center);
-  padding-top: 12px;
-  margin: 0;
-
-  li {
-    margin: 5px;
-    button {
-      outline: none!important;
-      box-shadow: none!important;
-      box-sizing: border-box;
-      width: 40px;
-      height: 40px;
-      border-radius: 5px;
-      background: #ffffff;
-      @include prefix.flex();
-      @include prefix.flex-justifyContent(center);
-      @include prefix.flex-alignItem(center);
-      border: 1px solid gray;
-      color: #2982a4;
-      @include prefix.text-decoration(none);
-      &:active {
-        box-shadow: 1px 1px 5px gray, -1px -1px 5px gray!important;
-      }
+    @include prefix.flex();
+    @include prefix.flex-justifyContent(center);
+    padding-top: 12px;
+    margin: 0;
+    li {
+        margin: 5px;
+        button {
+            outline: none!important;
+            box-shadow: none!important;
+            box-sizing: border-box;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            background: #ffffff;
+            @include prefix.flex();
+            @include prefix.flex-justifyContent(center);
+            @include prefix.flex-alignItem(center);
+            border: 1px solid gray;
+            color: #2982a4;
+            @include prefix.text-decoration(none);
+            &:active {
+                box-shadow: 1px 1px 5px gray, -1px -1px 5px gray!important;
+            }
+        }
+        button.active {
+            color: #fff;
+            background: #1a21ec;
+            border-color: #1a21ec;
+        }
     }
-
-    button.active {
-      color: #fff;
-      background: #1a21ec;
-      border-color: #1a21ec;
-    }
-  }
 }
 
 // Filter
 .css-20369a {
-  margin-bottom: 17px;
+    margin-bottom: 17px;
 }
+
 .css-bc16c0 {
-  border-radius: 8px;
-  background-color: rgb(255, 255, 255);
-  position: relative;
-  width: 100%;
-  overflow: unset;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    width: 100%;
+    overflow: unset;
 }
+
 .css-3fba6e {
-  @include prefix.flex();
-  @include prefix.flex-justifyContent(space-between);
-  @include prefix.flex-alignItem(center);
-  padding: 16px;
-  position: relative;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+    @include prefix.flex();
+    @include prefix.flex-justifyContent(space-between);
+    @include prefix.flex-alignItem(center);
+    padding: 16px;
+    position: relative;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
+
 .css-554658 {
-  flex: 1 0 0%;
-  min-width: 0px;
+    flex: 1 0 0%;
+    min-width: 0px;
 }
+
 .css-361513 {
-  flex: 0 0 auto;
-  width: 81.6667%;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+    flex: 0 0 auto;
+    width: 81.6667%;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
 }
+
 .css-d763f0 {
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-box-align: center;
-  align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
 }
+
 .css-aa3ad4 {
-  @include prefix.flex();
-  @include prefix.flex-justifyContent(center);
-  @include prefix.flex-alignItem(center);
-  font-size: 14px;
-  line-height: 29px;
-  height: 30px;
-  border-radius: 999px;
-  width: fit-content;
-  text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
-  outline: 0px;
-  white-space: nowrap;
-  padding: 0px 12px;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  margin-bottom: 0.25rem;
-  margin-top: 0.25rem;
-  color: rgb(20, 53, 195);
-  border: 1px solid rgb(20, 53, 195);
-  background: rgb(230, 238, 255) !important;
+    @include prefix.flex();
+    @include prefix.flex-justifyContent(center);
+    @include prefix.flex-alignItem(center);
+    font-size: 14px;
+    line-height: 29px;
+    height: 30px;
+    border-radius: 999px;
+    width: fit-content;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    outline: 0px;
+    white-space: nowrap;
+    padding: 0px 12px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+    color: rgb(20, 53, 195);
+    border: 1px solid rgb(20, 53, 195);
+    background: rgb(230, 238, 255) !important;
 }
+
 .css-2ba442 {
-  font-size: 16px;
-  padding-left: 5px;
-  margin-top: -2px;
+    font-size: 16px;
+    padding-left: 5px;
+    margin-top: -2px;
 }
+
 .css-a9a90c {
-  color: unset;
-  text-decoration: unset;
+    color: unset;
+    text-decoration: unset;
 }
+
 .css-a94d62 {
-  float: right;
-  text-decoration: unset;
-  cursor: pointer;
-  color: rgb(239, 39, 65) !important;
+    float: right;
+    text-decoration: unset;
+    cursor: pointer;
+    color: rgb(239, 39, 65) !important;
 }
+
 .css-844e64 {
-  position: absolute;
-  left: 0px;
-  margin-top: 2px;
-  width: 3px;
-  height: 21px;
-  background-color: rgb(51, 51, 51);
+    position: absolute;
+    left: 0px;
+    margin-top: 2px;
+    width: 3px;
+    height: 21px;
+    background-color: rgb(51, 51, 51);
 }
+
 .css-56cb1d {
-  color: rgb(51, 51, 51);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 24px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+    color: rgb(51, 51, 51);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
+
 .css-strwe {
-  padding: 1rem;
+    padding: 1rem;
 }
+
 .css-0f4d54 {
-  @include prefix.flex();
-  @include prefix.flex-wrap(wrap);
-  margin-bottom: 0.25rem;
-  margin-left: 0px;
-  margin-right: 0px;
+    @include prefix.flex();
+    @include prefix.flex-wrap(wrap);
+    margin-bottom: 0.25rem;
+    margin-left: 0px;
+    margin-right: 0px;
 }
+
 .css-81e6e6 {
-  flex: 0 0 auto;
-  width: 12.5%;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+    flex: 0 0 auto;
+    width: 12.5%;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
 }
+
 .css-987424 {
-  font-weight: 600;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+    font-weight: 600;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
+
 .css-0d472a {
-  flex: 0 0 auto;
-  width: 83.3333%;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-  height: 2.5rem;
-  overflow: hidden;
+    flex: 0 0 auto;
+    width: 83.3333%;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    height: 2.5rem;
+    overflow: hidden;
 }
+
 .css-8a614d {
-  border-radius: 4px;
-  display: inline-block;
-  border: 1px solid rgb(224, 224, 224);
-  background-color: rgb(255, 255, 255);
-  position: relative;
-  overflow: hidden;
-  margin-right: 0.5rem;
-  margin-bottom: 0.3rem;
-  padding: 0.375rem 1.25rem;
-  color: rgb(51, 51, 51);
-  cursor: pointer;
-  &:hover {
-    background: rgb(243, 243, 243);
-  }
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid rgb(224, 224, 224);
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    overflow: hidden;
+    margin-right: 0.5rem;
+    margin-bottom: 0.3rem;
+    padding: 0.375rem 1.25rem;
+    color: rgb(51, 51, 51);
+    cursor: pointer;
+    &:hover {
+        background: rgb(243, 243, 243);
+    }
 }
+
 .css-8a614d.active {
-  border-radius: 4px;
-  display: inline-block;
-  border: 1px solid rgb(20, 53, 195);
-  background-color: rgb(255, 255, 255);
-  position: relative;
-  overflow: hidden;
-  margin-right: 0.5rem;
-  margin-bottom: 0.3rem;
-  padding: 0.375rem 1.25rem;
-  color: rgb(20, 53, 195);
-  cursor: pointer;
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid rgb(20, 53, 195);
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    overflow: hidden;
+    margin-right: 0.5rem;
+    margin-bottom: 0.3rem;
+    padding: 0.375rem 1.25rem;
+    color: rgb(20, 53, 195);
+    cursor: pointer;
 }
+
 .css-400bf0 {
-  font-weight: bold;
-  @include prefix.flex();
-  @include prefix.flex-justifyContent(flex-start);
-  @include prefix.flex-alignItem(center);
-  @include prefix.flex-box-pack(start);
-  font-size: 0.875rem;
+    font-weight: bold;
+    @include prefix.flex();
+    @include prefix.flex-justifyContent(flex-start);
+    @include prefix.flex-alignItem(center);
+    @include prefix.flex-box-pack(start);
+    font-size: 0.875rem;
 }
+
 .css-4ec51c {
-  position: absolute;
-  top: -1px;
-  right: -1px;
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 0px 20px 20px 0px;
-  border-color: transparent rgb(20, 53, 195) transparent transparent;
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 0px 20px 20px 0px;
+    border-color: transparent rgb(20, 53, 195) transparent transparent;
 }
+
 .css-d6d985 {
-  position: absolute;
-  top: 0px;
-  right: 2px;
-  color: rgb(255, 255, 255);
-  z-index: 0;
-  font-size: 7px;
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    color: rgb(255, 255, 255);
+    z-index: 0;
+    font-size: 7px;
 }
 
 // Hiển thị thông báo ko tìm thấy sản phẩm
-.css-418419 {
-  display: none;
-  margin-top: 8rem;
-  margin-bottom: 8rem;
-  text-align: center;
-}
-.css-418419.active {
-  display: block;
+.css-6l7rf5 {
+    box-sizing: border-box;
+    margin: 0px 0px 24px;
+    min-width: 0px;
+    display: flex;
 }
 
-.css-c2ed66 {
-  position: relative;
-  overflow: hidden;
-  flex: 1 0 auto;
-  display: flex;
-  cursor: unset;
-  z-index: 0;
-  margin: auto;
-  border-radius: 0px;
-  width: 200px;
-  height: 200px !important;
-}
-.css-9cba25 {
-  margin-top: 1.5rem;
-  font-size: 1rem;
+.css-1hwtax5 {
+    box-sizing: border-box;
+    margin: 0px 16px 0px 0px;
+    min-width: 0px;
+    width: 75.6%;
 }
 
-// Chi tiết sản phẩm
+.css-i22ydz {
+    padding: 24px;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    position: relative;
+}
+
+.css-4cffwv {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    display: flex;
+}
+
+.css-1i1dodm {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    width: 40.5%;
+    padding-right: 16px;
+}
+
+.css-709yn1 {
+    background-color: rgb(255, 255, 255);
+}
+
+.css-jdz5ak {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -webkit-transition: -webkit-transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    transition: transform 0.5s;
+}
+
+.css-3tu0eq {
+    border-bottom: 1px dashed rgb(224, 224, 224);
+    margin: 1rem 0px;
+}
+
+.css-r9cu07 {
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    position: relative;
+}
+
+.css-r9cu07 .card-body {
+    padding: 1rem;
+}
+
+.css-6b3ezu {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    width: 59.5%;
+}
+
+.css-1jpdzyd {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    max-height: 3.775rem;
+    min-height: 3.775rem;
+    font-size: 24px;
+    line-height: 1.33;
+    display: unset;
+    word-break: break-word;
+}
+
+.css-5nimvs {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    color: rgb(132, 135, 136);
+}
+
+.css-c2cixi {
+    color: rgb(20, 53, 195);
+    font-weight: 500;
+    margin-left: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.css-1qgvt7n::before {
+    content: "|";
+    margin: 0px 8px;
+}
+
+.css-1b2x0kn {
+    margin-top: 1rem;
+}
+
+.css-1wn7dgo {
+    color: rgb(247, 130, 18);
+    font-size: 0.75rem;
+    margin: 0.5rem 0px;
+}
+
+.css-11n8erc {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    --button-icon-color: #66BB6A;
+    margin-bottom: 10px;
+}
+
+.css-1etdbj7 {
+    display: flex;
+    -webkit-box-align: baseline;
+    align-items: baseline;
+}
+
+.css-3725in {
+    width: max-content;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+    color: rgb(20, 53, 195);
+    font-weight: bold;
+}
+
+.css-vuhw84 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0.25rem 0px;
+}
+
+.css-195zgzt {
+    position: relative;
+    overflow: hidden;
+    flex: 1 0 auto;
+    display: flex;
+    cursor: unset;
+    z-index: 0;
+    margin: auto;
+    border-radius: 2px;
+    border: 1px solid rgb(224, 224, 224);
+    width: 32px;
+    content-visibility: auto;
+    height: 32px !important;
+}
+
+.css-jdz5ak {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -webkit-transition: -webkit-transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    transition: transform 0.5s;
+}
+
+.css-1e9pn0v {
+    font-size: 0.75rem;
+    color: rgb(132, 135, 136);
+    margin-left: 0.5rem;
+}
+
+.css-barcwm {
+    margin-left: 0.25rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.75rem;
+}
+
+.css-3tu0eq {
+    border-bottom: 1px dashed rgb(224, 224, 224);
+    margin: 1rem 0px;
+}
+
+.css-1sfy14o {
+    color: rgb(51, 51, 51);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.css-kr4u7a {
+    display: inline-block;
+    border: 1px solid rgb(20, 53, 195);
+    background-color: rgba(20, 53, 195, 0.08);
+    padding: 0.5rem 1.25rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.css-10y5j5j {
+    color: rgb(20, 53, 195);
+    font-weight: bold;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    font-size: 0.875rem;
+}
+
+.css-1sulisw {
+    display: flex;
+    justify-content: space-around;
+}
+
+.css-syv2kv {
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: column;
+}
+
+.css-64noit {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.css-sr31nm {
+    color: rgb(237, 33, 1);
+}
+
+.css-1xghdzx {
+    width: max-content;
+    display: inline-block;
+    color: rgb(237, 33, 1);
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+.css-iq3qhu {
+    font-size: 0.75rem;
+    color: rgb(51, 51, 51);
+    flex: 1 1 0%;
+}
+
+.css-1mye30f {
+    width: max-content;
+    display: inline-block;
+    color: rgb(237, 33, 1);
+    margin-left: 4px;
+}
+
+.css-18wywdr {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 0px 36px 36px 0px;
+    border-color: transparent rgb(20, 53, 195) transparent transparent;
+}
+
+.css-th3zma {
+    position: absolute;
+    top: 0px;
+    right: 6px;
+    color: rgb(255, 255, 255);
+    z-index: 0;
+    font-size: 10px;
+}
+
+.css-ji66tv {
+    margin-top: 1rem;
+}
+
+.css-33xjxx {
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+    line-height: 1rem;
+    padding: 0.365rem 0.75rem;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(20, 53, 195);
+    border-color: rgb(20, 53, 195);
+    color: rgb(255, 255, 255);
+    border-width: 1px;
+    border-style: solid;
+    user-select: none;
+    text-decoration: none;
+    flex-direction: column;
+    position: relative;
+    height: 46px;
+    width: 49%;
+}
+
+.css-bkwyxf {
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+    line-height: 1rem;
+    padding: 0.365rem 0.75rem;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(48, 150, 179);
+    color: rgb(255, 255, 255);
+    user-select: none;
+    text-decoration: none;
+    flex-direction: column;
+    position: relative;
+    width: 49%;
+    height: 46px;
+    border: none;
+}
+
+.css-rj9ja1 {
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+    line-height: 1rem;
+    padding: 0.365rem 0.75rem;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(20, 53, 195);
+    border-color: rgb(20, 53, 195);
+    border-width: 1px;
+    border-style: solid;
+    user-select: none;
+    text-decoration: none;
+    flex-direction: row;
+    position: relative;
+    height: 46px;
+    width: 100%;
+    color: rgb(255, 255, 255) !important;
+}
+
+.css-mz7xyg {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.css-l5vln9 {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    width: 24.4%;
+}
+
+.css-cc7zbm {
+    padding: 16px;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    position: relative;
+}
+
+.css-5ri8n0 {
+    color: rgb(83, 195, 5);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.css-1plrovb {
+    margin-left: 8px;
+}
+
+.css-tq900l {
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.css-nlnywq {
+    font-size: 1rem;
+    color: rgb(51, 51, 51);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.css-762ld9 {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.css-ssxjzj {
+    margin-left: 8px;
+    flex: 1 1 0%;
+}
+
+.css-1b0ylgr {
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+}
+
+.css-k4cc6o {
+    margin-left: 2rem;
+}
+
+.css-p91eq5 {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 1264px;
+}
+
+// Sản phẩm tương tự
+.prod-detail__similar-products,
+.product_details-specifications,
+.prod-detail__same-brand {
+    padding: 15px 0;
+    background: #ffffff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.css-efadb6 {
+    @include prefix.flex;
+    @include prefix.flex-justifyContent(space-between);
+}
+
+.css-cdb9a5 {
+    padding-left: 8px;
+    color: #333333;
+    font-size: 1.1rem;
+    font-weight: 600;
+    position: relative;
+    &::before {
+        content: "";
+        display: block;
+        width: 3px;
+        height: 81%;
+        background: #665353;
+        position: absolute;
+        left: 0;
+        top: 3px;
+        border-radius: 5px;
+    }
+}
+
+.css-73cdde {
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    color: #ae8585;
+}
+
+// Chi tiết sản phẩm và thông số kĩ thuật 
+.css-197050 {
+    @include prefix.flex();
+    @include prefix.flex-justifyContent(space-between);
+    button {
+        border: none;
+        background: #ffffff;
+        color: #4780c7;
+        width: 100%;
+        margin: auto;
+        padding: 15px;
+        text-align: center;
+    }
+}
+
+.pds__product-details.css-c38e84 {
+    width: 70%;
+}
+
+.content-expansion.deactive {
+    display: none!important;
+}
+
+.collapse-content {
+    display: none;
+    &.active {
+        display: block;
+    }
+}
+
+.pds__pd__content {
+    padding-left: 15px;
+}
+
+.pds__specifications.css-357cbb {
+    width: 27%;
+}
+
+.css-4c1e9d {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    transition: 0.15s;
+    &::after {
+        content: ' ';
+        background: linear-gradient(transparent, hsla(0, 0%, 100%, 0) 70%, #fff 90%);
+        background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255));
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 40px;
+        width: 100%;
+    }
+    &.active {
+        height: auto;
+    }
+}
+
+.pds__s__content {
+    padding-right: 20px;
+}
+
+.css-eeaa32 {
+    display: flex;
+    background: #f6f6f6;
+    margin-bottom: 12px;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.name-specification.css-01406a {
+    width: 100%;
+    margin-right: 15px;
+}
